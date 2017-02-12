@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: Countdown Maintenance Mode
- * Description: Put your site into maintenance mode with a countdown
- * Version: 1.0
+ * Description: Put your site into maintenance mode with a countdown timer
+ * Version: 1.1
  * Author: Benjamin Mercer
  *
  **/
