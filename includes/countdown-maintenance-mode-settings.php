@@ -33,6 +33,9 @@ function cdmm_options_content() {
 					</th>
 					<td>
 						<input name="cdmm_settings[enable]" id="cdmm_settings[enable]" type="checkbox" value="1" <?php checked('1', $cdmm_options['enable']); ?> >
+						<p>
+							<?php _e('Put site into maintenance mode, only logged in Administrators will be able to view the site.', 'cdmm_domain'); ?>
+						</p>
 					</td>
 				</tr>
 				<tr>
@@ -44,10 +47,41 @@ function cdmm_options_content() {
 					<td>
 						<input name="cdmm_settings[target_date]" id="cdmm_settings[target_date]" type="datetime-local" value="<?php echo $cdmm_options['target_date']; ?>">
 						<p class="description">
-							<?php _e('Enter a go live date', 'cdmm_domain'); ?>
+							<?php _e('Enter a go live date to enable the countdown, clear date to remove countdown.', 'cdmm_domain'); ?>
 						</p>
 					</td>
 				</tr>
+
+				<tr>
+					<th scope="row">
+						<label for="cdmm_settings[logo_image_url]">
+							<?php _e('Upload Logo', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<input name="cdmm_settings[logo_image_url]" id="cdmm_settings[logo_image_url]" type="hidden" class="widefat logo_image_url" value="<?php echo $cdmm_options['logo_image_url']; ?>">
+						<input id="upload_logo" type="button" class="button" value="<?php _e( 'Upload', 'cdmm_domain' ); ?>" />
+						<?php if ( '' != $cdmm_options['logo_image_url'] ): ?>
+							<input id="delete_logo_button" name="cdmm_settings[logo_image_url]" type="submit" class="button" value="<?php _e( '', 'cdmm_domain' ); ?>" />
+						<?php endif; ?>
+						<p class="description">
+							<?php _e('Upload a logo', 'cdmm_domain'); ?>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="upload_logo_preview">
+							<?php _e('Logo Preview', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<div id="upload_logo_preview">
+							<img style="max-width:200px; background: #cccccc;" src="<?php echo esc_url( $cdmm_options['logo_image_url'] ); ?>" />
+						</div>
+					</td>
+				</tr>
+
 				<tr>
 					<th scope="row">
 						<label for="cdmm_settings[message]">
@@ -71,7 +105,7 @@ function cdmm_options_content() {
 						<input name="cdmm_settings[background_image_url]" id="cdmm_settings[background_image_url]" type="hidden" class="widefat background_image_url" value="<?php echo $cdmm_options['background_image_url']; ?>">
 						<input id="upload_background" type="button" class="button" value="<?php _e( 'Upload', 'cdmm_domain' ); ?>" />
 						<?php if ( '' != $cdmm_options['background_image_url'] ): ?>
-							<input id="delete_logo_button" name="cdmm_settings[background_image_url]" type="submit" class="button" value="<?php _e( '', 'cdmm_domain' ); ?>" />
+							<input id="delete_background_button" name="cdmm_settings[background_image_url]" type="submit" class="button" value="<?php _e( '', 'cdmm_domain' ); ?>" />
 						<?php endif; ?>
 						<p class="description">
 							<?php _e('Upload a background image', 'cdmm_domain'); ?>
@@ -85,9 +119,22 @@ function cdmm_options_content() {
 						</label>
 					</th>
 					<td>
-						<div id="upload_background_preview" style="max-height: 100px;">
+						<div id="upload_background_preview">
 							<img style="max-width:200px;" src="<?php echo esc_url( $cdmm_options['background_image_url'] ); ?>" />
 						</div>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">
+						<label for="cdmm_settings[enable_form]">
+							<?php _e('Enable Subscriber Form', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<input name="cdmm_settings[enable_form]" id="cdmm_settings[enable_form]" type="checkbox" value="1" <?php checked('1', $cdmm_options['enable_form']); ?> >
+						<p>
+							<?php _e('Enable a subscriber form for users to request notifications, messages will be sent to the admin email address [' . get_option('admin_email') . ']', 'cdmm_domain'); ?>
+						</p>
 					</td>
 				</tr>
 				</tbody>

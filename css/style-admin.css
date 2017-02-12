@@ -1,0 +1,18 @@
+#delete_logo_button {
+    background-image: url("../img/delete-icon.png"); /* Change url to wanted image */
+    background-size: cover;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: transparent;
+}
+#delete_background_button {
+    background-image: url("../img/delete-icon.png"); /* Change url to wanted image */
+    background-size: cover;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    color: transparent;
+}

@@ -15,7 +15,7 @@
  * ========================================================== */
 
 ! function($) {
-    console.warn('interactive bg called');
+
     var defaults = {
         strength: 25,
         scale: 1.05,
@@ -42,9 +42,9 @@
             // Insert new container so that the background can be contained when scaled.
 
             if (settings.wrapContent == false) {
-                el.prepend("<div class='ibg-bg'></div>")
+                el.prepend("<div class='ibg-bg'></div>");
             } else {
-                el.wrapInner("<div class='ibg-bg'></div>")
+                el.wrapInner("<div class='ibg-bg'></div>");
             }
 
 
@@ -61,12 +61,12 @@
             el.find("> .ibg-bg").css({
                 width: w,
                 height: h
-            })
-
-
+            });
 
             if (has_touch || screen.width <= 699) {
                 // For Mobile
+                console.log('mobile');
+
                 // Add support for accelerometeron mobile
                 window.addEventListener('devicemotion', deviceMotionHandler, false);
 
@@ -89,7 +89,10 @@
 
             } else {
                 // For Desktop
+                console.log('desktop');
+
                 // Animate only scaling when mouse enter
+
                 el.mouseenter(function(e) {
                     if (settings.scale != 1) el.addClass("ibg-entering")
                     el.find("> .ibg-bg").css({
@@ -107,7 +110,6 @@
                         el.removeClass("ibg-entering")
                     });
                 }).mousemove(function(e) {
-
                     // This condition prevents transition from causing the movement of the background to lag
                     if (!el.hasClass("ibg-entering") && !el.hasClass("exiting")) {
                         var pageX = e.pageX || e.clientX,
@@ -118,6 +120,7 @@
                             newY = ((sh * pageY)) * -1;
                         // Use matrix to move the background from its origin
                         // Also, disable transition to prevent lag
+                        console.log('mousemove', pageX);
                         el.find("> .ibg-bg").css({
                             "-webkit-transform": "matrix(" + settings.scale + ",0,0," + settings.scale + "," + newX + "," + newY + ")",
                             "-moz-transform": "matrix(" + settings.scale + ",0,0," + settings.scale + "," + newX + "," + newY + ")",
@@ -149,4 +152,6 @@
         });
 
     }
+
+
 }(window.jQuery);

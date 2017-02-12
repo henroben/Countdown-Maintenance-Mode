@@ -57,17 +57,16 @@
     padding-bottom: 0;
     height: 20%; /* fix for IE */
 }
-.center-wrapper .logo svg {
-    width: 10%;
-    height: auto;
+.center-wrapper .logo img {
+    width: auto;
+    height: 8rem;
     padding: 0px;
     margin: 0px;
 }
-.center-wrapper .logo svg path {
-    fill: #999999;
+.center-wrapper .logo img {
     opacity: 0.3;
     transition: opacity 0.5s; }
-.center-wrapper .logo svg path:hover {
+.center-wrapper .logo img:hover {
     cursor: pointer;
     opacity: 0.9; }
 .center-wrapper .row {
@@ -78,7 +77,7 @@
     padding-top: 1em;
     padding-bottom: 1em;
     color: #777;
-    font-size: 1.5em; }
+    font-size: 1.3em; }
 .center-wrapper .time {
     background-color: #444;
     margin-top: .8em;
@@ -104,7 +103,7 @@
     background-color: #777;
     border-color: #777; }
 
-.center-wrapper:hover svg path {
+.center-wrapper:hover img {
     opacity: 0.9; }
 
 .center-wrapper:hover input {
