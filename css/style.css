@@ -1,0 +1,121 @@
+.wrapper {
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden; }
+
+.bg {
+    position: fixed;
+    height: 100% !important;
+    width: 100%;
+    z-index: 0; }
+
+.ibg-bg {
+    position: fixed;
+    z-index: 0; }
+
+.image-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    background: url(../img/wall.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
+
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important; }
+
+.left-radius {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important; }
+
+.right-radius {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important; }
+
+.center-wrapper {
+    position: fixed;
+    width: 40em;
+    height: 26em;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background-color: #333333;
+    z-index: 1; }
+.center-wrapper .logo {
+    margin: 0px;
+    text-align: center;
+    margin-top: 1.8rem;
+    padding-bottom: 0;
+    height: 20%; /* fix for IE */
+}
+.center-wrapper .logo svg {
+    width: 10%;
+    height: auto;
+    padding: 0px;
+    margin: 0px;
+}
+.center-wrapper .logo svg path {
+    fill: #999999;
+    opacity: 0.3;
+    transition: opacity 0.5s; }
+.center-wrapper .logo svg path:hover {
+    cursor: pointer;
+    opacity: 0.9; }
+.center-wrapper .row {
+    text-align: center !important;
+    margin-top: 0px; }
+.center-wrapper .text {
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    color: #777;
+    font-size: 1.5em; }
+.center-wrapper .time {
+    background-color: #444;
+    margin-top: .8em;
+    font-size: 2.8em;
+    margin-right: 1px;
+    color: #dddddd;
+    line-height: 0.8em;
+    padding-top: 0.5em; }
+.center-wrapper .time .time-type {
+    color: #777;
+    font-size: .2em; }
+.center-wrapper input {
+    opacity: 0.3;
+    transition: opacity 0.5s; }
+.center-wrapper .btn {
+    opacity: 0.3;
+    transition: opacity 0.5s; }
+.center-wrapper .btn-primary {
+    background-color: #444;
+    border-color: #444;
+    transition: background-color 0.3s; }
+.center-wrapper .btn-primary:hover {
+    background-color: #777;
+    border-color: #777; }
+
+.center-wrapper:hover svg path {
+    opacity: 0.9; }
+
+.center-wrapper:hover input {
+    opacity: 1; }
+
+.center-wrapper:hover .btn {
+    opacity: 1; }
+.error {
+    color: red;
+    font-weight: bold;
+}
+.success {
+    color: green;
+}
