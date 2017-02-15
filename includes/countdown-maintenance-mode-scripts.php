@@ -6,12 +6,15 @@ if(is_admin()){
 		wp_enqueue_style('cdmm-admin-style', plugins_url().'/countdown-maintenance-mode/css/style-admin.css');
 		wp_register_script( 'cdmm-upload',  plugins_url().'/countdown-maintenance-mode/js/cdmm_upload.js', array('jquery','media-upload','thickbox') );
 
-//		wp_enqueue_script('jquery');
-
+		// enqueue scripts for media library
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
-
 		wp_enqueue_script('media-upload');
+
+		// enqueue script for color picker
+		wp_enqueue_style( 'wp-color-picker' );
+		wp_enqueue_script('wp-color-picker');
+
 		wp_enqueue_script('cdmm-upload');
 	}
 

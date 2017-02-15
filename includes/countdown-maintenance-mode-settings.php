@@ -54,6 +54,51 @@ function cdmm_options_content() {
 
 				<tr>
 					<th scope="row">
+						<label for="cdmm_settings[text_color]">
+							<?php _e('Text Colour', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<input name="cdmm_settings[text_color]" id="cdmm_settings[text_color]"
+						       type="text" class="text-color" value="<?php echo (isset($cdmm_options['text_color']) && $cdmm_options['text_color'] != '' ) ? $cdmm_options['text_color'] : '#ffffff'; ?>">
+						<p class="description">
+							<?php _e('Enter a text colour for the Countdown Wrapper Panel', 'cdmm_domain'); ?>
+						</p>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">
+						<label for="cdmm_settings[info_background_color]">
+							<?php _e('Wrapper Background', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<input name="cdmm_settings[info_background_color]" id="cdmm_settings[info_background_color]"
+						       type="text" class="info-background-color" value="<?php echo (isset($cdmm_options['info_background_color']) && $cdmm_options['info_background_color'] != '' ) ? $cdmm_options['info_background_color'] : '#333333'; ?>">
+						<p class="description">
+							<?php _e('Enter a background colour for the Countdown Wrapper Panel', 'cdmm_domain'); ?>
+						</p>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">
+						<label for="cdmm_settings[countdown_background_color]">
+							<?php _e('Countdown Background', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<input name="cdmm_settings[countdown_background_color]" id="cdmm_settings[countdown_background_color]" type="text" class="countdown-background-color" value="<?php echo (isset($cdmm_options['countdown_background_color']) && $cdmm_options['countdown_background_color'] != '' ) ? $cdmm_options['countdown_background_color'] : '#444444'; ?>" >
+
+						<p class="description">
+							<?php _e('Enter a background colour for the Countdown Number Panels', 'cdmm_domain'); ?>
+						</p>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">
 						<label for="cdmm_settings[logo_image_url]">
 							<?php _e('Upload Logo', 'cdmm_domain'); ?>
 						</label>

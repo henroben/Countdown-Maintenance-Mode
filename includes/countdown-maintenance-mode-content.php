@@ -16,6 +16,9 @@ function cdmm_set_mode() {
 		$enable_form = $cdmm_options['enable_form'];
 		$recipient = get_option('admin_email');
 		$subject = 'Message from Maintenance Form';
+		$wrapper_color = $cdmm_options['info_background_color'];
+		$text_color = $cdmm_options['text_color'];
+		$time_color = $cdmm_options['countdown_background_color'];
 
 		// check to see if background image has been set, if not, use default
 		if(!$background_image) {
@@ -39,7 +42,17 @@ function cdmm_set_mode() {
 				</script>
 				<div class=" wrapper bg" data-ibg-bg="' . $background_image . '"></div>
 		        <div class="container">
-		            <div class="center-wrapper">';
+		            <div class="center-wrapper" ';
+						$style = 'style="';
+						if(isset($wrapper_color)) {
+			    	        $style .= 'background-color:' . $wrapper_color . ';';
+						}
+						if(isset($text_color)) {
+							$style .= 'color:' . $text_color . ';';
+						}
+						$style .= '"';
+		                echo $style . ' >';
+
 						if($logo_image) {
 							echo '<div class="logo">';
 								echo '<img src="' . $logo_image . '" title="' . $site_name . '">';
@@ -49,24 +62,44 @@ function cdmm_set_mode() {
 							echo '
 		                <div id="countdown" class="row">
 		                    <div class="col-xs-1"></div>
-		                    <div class="col-xs-2 time">
-		                        <span id="weeks">00</span>
+		                    <div class="col-xs-2 time"';
+							if(isset($wrapper_color)) {
+								echo 'style="background-color:' . $time_color . ';"';
+							}
+							echo '>';
+							echo '<span id="weeks">00</span>
 		                        <div class="time-type">WEEKS</div>
 		                    </div>
-		                    <div class="col-xs-2 time">
-		                        <span id="days">00</span>
+		                    <div class="col-xs-2 time"';
+							if(isset($wrapper_color)) {
+								echo 'style="background-color:' . $time_color . ';"';
+							}
+							echo '>';
+							echo '<span id="days">00</span>
 		                        <div class="time-type">DAYS</div>
 		                    </div>
-		                    <div  class="col-xs-2 time">
-		                        <span id="hours">00</span>
+		                    <div  class="col-xs-2 time"';
+							if(isset($wrapper_color)) {
+								echo 'style="background-color:' . $time_color . ';"';
+							}
+							echo '>';
+							echo '<span id="hours">00</span>
 		                        <div class="time-type">HOURS</div>
 		                    </div>
-		                    <div class="col-xs-2 time">
-		                        <span id="minutes">00</span>
+		                    <div class="col-xs-2 time"';
+							if(isset($wrapper_color)) {
+								echo 'style="background-color:' . $time_color . ';"';
+							}
+							echo '>';
+							echo '<span id="minutes">00</span>
 		                        <div class="time-type">MINS</div>
 		                    </div>
-		                    <div class="col-xs-2 time">
-		                        <span id="seconds">00</span>
+		                    <div class="col-xs-2 time"';
+							if(isset($wrapper_color)) {
+								echo 'style="background-color:' . $time_color . ';"';
+							}
+							echo '>';
+							echo '<span id="seconds">00</span>
 		                        <div class="time-type">SECS</div>
 		                    </div>
 		                    <div class="col-xs-1"></div>

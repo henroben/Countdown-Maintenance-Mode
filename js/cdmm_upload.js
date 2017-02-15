@@ -1,4 +1,9 @@
 jQuery(document).ready(function($) {
+    // enable color picker
+     $('.text-color').wpColorPicker();
+     $('.info-background-color').wpColorPicker();
+     $('.countdown-background-color').wpColorPicker();
+
     var imgType = '';
     $('#upload_logo').click(function() {
         imgType = 'logo';
