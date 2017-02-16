@@ -20,6 +20,7 @@ function cdmm_set_mode() {
 		$text_color = $cdmm_options['text_color'];
 		$time_color = $cdmm_options['countdown_background_color'];
 		$countdown_font = $cdmm_options['countdown_font'];
+		$enable_animation = isset($cdmm_options['enable_active_background']) ? $cdmm_options['enable_active_background'] : null;
 
 		// check to see if background image has been set, if not, use default
 		if(!$background_image) {
@@ -61,9 +62,13 @@ function cdmm_set_mode() {
 			<body>
 				<script>
 					var target_date = "' . $targetDate . '";
-				</script>
-				<div class=" wrapper bg" data-ibg-bg="' . $background_image . '"></div>
-		        <div class="container">
+				</script>';
+				if($enable_animation) {
+					echo '<div class="wrapper bg" data-ibg-bg="' . $background_image . '" ></div>';
+				} else {
+					echo '<div class="image-background" style="background: url(' . $background_image . ') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>';
+				}
+		        echo '<div class="container">
 		            <div class="center-wrapper" ';
 						$style = 'style="';
 						if(isset($wrapper_color)) {
@@ -162,8 +167,10 @@ function cdmm_set_mode() {
 			                </div>';
 						}
 		            echo '</div>
-		        </div>
-				<script>
+		        </div>';
+		        if($enable_animation) {
+		        	echo '
+		        	<script>
 			        $(document).ready(function(){
 			            $(".bg").interactive_bg({
 			                contain: true,
@@ -177,8 +184,9 @@ function cdmm_set_mode() {
 			                height: $(window).outerHeight()
 			            })
 			        })
-		        </script>
-	        </body>
+		        </script>';
+		        }
+	        echo '</body>
         </html>';
 		die();
 	}

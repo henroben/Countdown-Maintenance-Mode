@@ -44,6 +44,21 @@ function cdmm_options_content() {
 						</p>
 					</td>
 				</tr>
+
+				<tr>
+					<th scope="row">
+						<label for="cdmm_settings[enable_active_background]">
+							<?php _e('Enable Interactive Background', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<input name="cdmm_settings[enable_active_background]" id="cdmm_settings[enable_active_background]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['enable_active_background']) ? $cdmm_options['enable_active_background'] : ''); ?> >
+						<p>
+							<?php _e('Enable background image animation on mouse move, using interactive_bg.js', 'cdmm_domain'); ?>
+						</p>
+					</td>
+				</tr>
+
 				<tr>
 					<th scope="row">
 						<label for="cdmm_settings[target_date]">
@@ -180,6 +195,7 @@ function cdmm_options_content() {
 						</p>
 					</td>
 				</tr>
+
 				<tr>
 					<th scope="row">
 						<label for="cdmm_settings[background_image_url]">
