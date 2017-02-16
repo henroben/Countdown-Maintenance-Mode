@@ -19,12 +19,14 @@ function cdmm_set_mode() {
 		$wrapper_color = $cdmm_options['info_background_color'];
 		$text_color = $cdmm_options['text_color'];
 		$time_color = $cdmm_options['countdown_background_color'];
+		$countdown_font = $cdmm_options['countdown_font'];
 
 		// check to see if background image has been set, if not, use default
 		if(!$background_image) {
 			$background_image = plugins_url() . '/countdown-maintenance-mode/img/wall.jpg';
 		}
-			echo '
+		header("Content-Type: text/html");
+		echo '
 		<!DOCTYPE html>
 		<html lang="' . $site_language . '">
 			<head>
@@ -34,8 +36,28 @@ function cdmm_set_mode() {
 			    <link rel="stylesheet" href="' . plugins_url() . '/countdown-maintenance-mode/css/style.css">
 			    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 			    <script src="' . plugins_url() . '/countdown-maintenance-mode/js/jquery.interactive_bg.js"></script>
-			    <script src="' . plugins_url() . '/countdown-maintenance-mode/js/main.js"></script>
-			</head>
+			    <script src="' . plugins_url() . '/countdown-maintenance-mode/js/main.js"></script>';
+
+			if($countdown_font) {
+				switch($countdown_font) {
+					case 'Roberto Mono':
+						echo '<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">';
+						break;
+					case 'Share Tech Mono':
+						echo '<link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono" rel="stylesheet">';
+						break;
+					case 'Nova Mono':
+						echo '<link href="https://fonts.googleapis.com/css?family=Nova+Mono" rel="stylesheet">';
+						break;
+					case 'Fira Mono':
+						echo '<link href="https://fonts.googleapis.com/css?family=Fira+Mono" rel="stylesheet">';
+						break;
+				}
+			} else {
+				// set default font family
+				$countdown_font = 'Roberto Mono';
+			}
+			echo '</head>
 			<body>
 				<script>
 					var target_date = "' . $targetDate . '";
@@ -45,7 +67,7 @@ function cdmm_set_mode() {
 		            <div class="center-wrapper" ';
 						$style = 'style="';
 						if(isset($wrapper_color)) {
-			    	        $style .= 'background-color:' . $wrapper_color . ';';
+			    	        $style .= 'background-color:' . $wrapper_color . '; ';
 						}
 						if(isset($text_color)) {
 							$style .= 'color:' . $text_color . ';';
@@ -55,14 +77,14 @@ function cdmm_set_mode() {
 
 						if($logo_image) {
 							echo '<div class="logo">';
-								echo '<img src="' . $logo_image . '" title="' . $site_name . '">';
+								echo '<img src="' . $logo_image . '" title="' . $site_name . '"' . ' alt="' . $site_name . '">';
 							echo '</div>';
 						}
 						if($targetDate) {
 							echo '
-		                <div id="countdown" class="row">
+		                <div id="countdown" class="row" style="font-family: \'' . $countdown_font . '\', monospace;">
 		                    <div class="col-xs-1"></div>
-		                    <div class="col-xs-2 time"';
+		                    <div class="col-xs-2 time" ';
 							if(isset($wrapper_color)) {
 								echo 'style="background-color:' . $time_color . ';"';
 							}
@@ -70,7 +92,7 @@ function cdmm_set_mode() {
 							echo '<span id="weeks">00</span>
 		                        <div class="time-type">WEEKS</div>
 		                    </div>
-		                    <div class="col-xs-2 time"';
+		                    <div class="col-xs-2 time" ';
 							if(isset($wrapper_color)) {
 								echo 'style="background-color:' . $time_color . ';"';
 							}
@@ -78,7 +100,7 @@ function cdmm_set_mode() {
 							echo '<span id="days">00</span>
 		                        <div class="time-type">DAYS</div>
 		                    </div>
-		                    <div  class="col-xs-2 time"';
+		                    <div  class="col-xs-2 time" ';
 							if(isset($wrapper_color)) {
 								echo 'style="background-color:' . $time_color . ';"';
 							}
@@ -86,7 +108,7 @@ function cdmm_set_mode() {
 							echo '<span id="hours">00</span>
 		                        <div class="time-type">HOURS</div>
 		                    </div>
-		                    <div class="col-xs-2 time"';
+		                    <div class="col-xs-2 time" ';
 							if(isset($wrapper_color)) {
 								echo 'style="background-color:' . $time_color . ';"';
 							}
@@ -94,7 +116,7 @@ function cdmm_set_mode() {
 							echo '<span id="minutes">00</span>
 		                        <div class="time-type">MINS</div>
 		                    </div>
-		                    <div class="col-xs-2 time"';
+		                    <div class="col-xs-2 time" ';
 							if(isset($wrapper_color)) {
 								echo 'style="background-color:' . $time_color . ';"';
 							}

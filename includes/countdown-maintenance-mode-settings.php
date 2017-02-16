@@ -15,6 +15,12 @@ function cdmm_options_content() {
 	// Init Options Global
 	global $cdmm_options;
 
+	function fontToClass($value) {
+		$class = strtolower($value);
+		$class = preg_replace('/\s+/', '-', $class);
+		return $class;
+	}
+
 	ob_start(); ?>
 	<div class="wrap">
 		<h2><?php _e('Countdown Maintenance Mode Settings', 'cdmm_domain'); ?></h2>
@@ -63,6 +69,40 @@ function cdmm_options_content() {
 						       type="text" class="text-color" value="<?php echo (isset($cdmm_options['text_color']) && $cdmm_options['text_color'] != '' ) ? $cdmm_options['text_color'] : '#ffffff'; ?>">
 						<p class="description">
 							<?php _e('Enter a text colour for the Countdown Wrapper Panel', 'cdmm_domain'); ?>
+						</p>
+					</td>
+				</tr>
+
+				<tr>
+					<th scope="row">
+						<label for="cdmm_settings[countdown_font]">
+							<?php _e('Number Font', 'cdmm_domain'); ?>
+						</label>
+					</th>
+					<td>
+						<select name="cdmm_settings[countdown_font]" id="cdmm_settings[countdown_font]" class="form-control">
+							<?php
+							$option_values = array(
+								'Roberto Mono',
+								'Share Tech Mono',
+								'Nova Mono',
+								'Fira Mono'
+							);
+							foreach($option_values as $key => $value) {
+								if($value == $cdmm_options['countdown_font']) {
+									?>
+									<option class="<?php echo fontToClass($value); ?>" selected><?php echo $value; ?></option>
+									<?php
+								} else {
+									?>
+									<option class="<?php echo fontToClass($value); ?>"><?php echo $value; ?></option>
+									<?php
+								}
+							}
+							?>
+						</select>
+						<p class="description">
+							<?php _e('Select a font for the Countdown numerals', 'cdmm_domain'); ?>
 						</p>
 					</td>
 				</tr>

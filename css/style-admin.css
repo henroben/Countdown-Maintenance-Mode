@@ -1,3 +1,9 @@
+/* Monospace Fonts for countdown selector */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono');
+
 #delete_logo_button {
     background-image: url("../img/delete-icon.png"); /* Change url to wanted image */
     background-size: cover;
@@ -15,4 +21,16 @@
     height: 32px;
     cursor: pointer;
     color: transparent;
+}
+.roberto-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+.share-tech-mono {
+    font-family: 'Share Tech Mono', monospace;
+}
+.nova-mono {
+    font-family: 'Nova Mono', monospace;
+}
+.fira-mono {
+    font-family: 'Fira Mono', monospace;
 }
