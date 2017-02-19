@@ -10,8 +10,11 @@ Functionality:
 	Upload and display custom user background
 	Enable subscriber form to enable visitors to submit their email address to request updates / news
 	Set custom message
+	Select countdown font
+	Select background / countdown font / countdown background colours
+	Select layout template
+	Enable / select overlay pattern options
 	
 TODO
-	Add colour / font functionality to admin backend
 	Validate and sanitise input
 	Check and fix mobile styles

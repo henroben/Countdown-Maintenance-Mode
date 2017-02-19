@@ -26,6 +26,14 @@
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover; }
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
 
 .no-padding {
     padding-left: 0 !important;
@@ -41,8 +49,8 @@
 
 .center-wrapper {
     position: fixed;
-    width: 40em;
-    height: 26em;
+    width: 40vw;
+    height: 60vh;
     top: 0;
     bottom: 0;
     left: 0;

@@ -1,0 +1,98 @@
+.logo {
+    margin: 0px;
+    text-align: center;
+    margin-top: 1.8rem;
+    padding-bottom: 0;
+    height: 20%; /* fix for IE */
+}
+.logo img {
+    width: auto;
+    height: 8rem;
+    padding: 0px;
+    margin: 0px;
+}
+.jumbotron {
+    background: rgba(255, 255, 255, 0);
+}
+
+.wrapper {
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
+    overflow: hidden; }
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important; }
+.left-radius {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important; }
+
+.right-radius {
+    border-top-left-radius: 0px !important;
+    border-bottom-left-radius: 0px !important; }
+
+.bg {
+    position: fixed;
+    height: 100% !important;
+    width: 100%;
+    z-index: 0; }
+
+.ibg-bg {
+    position: fixed;
+    z-index: 0; }
+.image-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    background: url(../img/wall.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.full-width-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    overflow: hidden;
+}
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.error {
+    color: red;
+    font-weight: bold;
+}
+.success {
+    color: green;
+}
+.container-fluid {
+    z-index: 200;
+}
+.row {
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+}
+@media (max-width: 1024px) {
+    .row {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+}
+@media (max-width: 768px) {
+    .row {
+        margin-top: 18vh;
+        margin-bottom: 18vh;
+    }
+}
