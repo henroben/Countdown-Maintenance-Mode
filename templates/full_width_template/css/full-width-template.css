@@ -70,9 +70,29 @@
     top: 0;
     z-index: 1;
 }
+#form-msg {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: -30px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+/* Social Media Icons */
+.social-media {
+    text-align: center; }
+.social-media a {
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.3s; }
+.social-media a:hover {
+    color: #fff;
+    opacity: 1; }
+
 .error {
     color: red;
     font-weight: bold;
+    background-color: rgba(255,255,255,0.3);
 }
 .success {
     color: green;

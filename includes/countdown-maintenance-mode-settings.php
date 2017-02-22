@@ -210,7 +210,7 @@ function cdmm_options_content() {
 						</th>
 						<td>
 							<div id="upload_logo_preview">
-								<img style="max-width:200px; background: #cccccc;" src="<?php echo esc_url( $cdmm_options['logo_image_url'] ); ?>" />
+								<img style="max-width:200px; background: #cccccc;" src="<?php if(!empty($cdmm_options['logo_image_url'])) { echo esc_url( $cdmm_options['logo_image_url'] ); } ?>" />
 							</div>
 						</td>
 					</tr>
@@ -222,7 +222,7 @@ function cdmm_options_content() {
 							</label>
 						</th>
 						<td>
-							<input name="cdmm_settings[message]" id="cdmm_settings[message]" type="text" class="widefat" value="<?php echo $cdmm_options['message']; ?>">
+							<input name="cdmm_settings[message]" id="cdmm_settings[message]" type="text" class="widefat" value="<?php if(!empty($cdmm_options['message'])){ echo $cdmm_options['message']; } ?>">
 							<p class="description">
 								<?php _e('Enter a message', 'cdmm_domain'); ?>
 							</p>
@@ -236,7 +236,7 @@ function cdmm_options_content() {
 							</label>
 						</th>
 						<td>
-							<input name="cdmm_settings[background_image_url]" id="cdmm_settings[background_image_url]" type="hidden" class="widefat background_image_url" value="<?php echo $cdmm_options['background_image_url']; ?>">
+							<input name="cdmm_settings[background_image_url]" id="cdmm_settings[background_image_url]" type="hidden" class="widefat background_image_url" value="<?php if(!empty($cdmm_options['background_image_url'])){ echo $cdmm_options['background_image_url']; } ?>">
 							<input id="upload_background" type="button" class="button" value="<?php _e( 'Upload', 'cdmm_domain' ); ?>" />
 							<?php if ( '' != $cdmm_options['background_image_url'] ): ?>
 								<input id="delete_background_button" name="cdmm_settings[background_image_url]" type="submit" class="button" value="<?php _e( '', 'cdmm_domain' ); ?>" />
@@ -317,7 +317,7 @@ function cdmm_options_content() {
 							</label>
 						</th>
 						<td>
-							<input type="range" name="cdmm_settings[overlay_opacity]" id="cdmm_settings[overlay_opacity]" min="0" max="10" value="<?php echo $cdmm_options['overlay_opacity']; ?>">
+							<input type="range" name="cdmm_settings[overlay_opacity]" id="cdmm_settings[overlay_opacity]" min="0" max="10" value="<?php if(!empty($cdmm_options['overlay_opacity'])){ echo $cdmm_options['overlay_opacity']; } ?>">
 							<p class="description">
 								<?php _e('Select the overlay pattern opacity', 'cdmm_domain'); ?>
 							</p>
@@ -332,7 +332,7 @@ function cdmm_options_content() {
 						</th>
 						<td>
 							<div id="upload_background_preview">
-								<img style="max-width:200px;" src="<?php echo esc_url( $cdmm_options['background_image_url'] ); ?>" />
+								<img style="max-width:200px;" src="<?php if(!empty($cdmm_options['background_image_url'])) { echo esc_url( $cdmm_options['background_image_url'] ); } ?>" />
 							</div>
 						</td>
 					</tr>
@@ -347,6 +347,90 @@ function cdmm_options_content() {
 							<input name="cdmm_settings[enable_form]" id="cdmm_settings[enable_form]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['enable_form']) ? $cdmm_options['enable_form'] : ''); ?> >
 							<p>
 								<?php _e('Enable a subscriber form for users to request notifications, messages will be sent to the admin email address [' . get_option('admin_email') . ']', 'cdmm_domain'); ?>
+							</p>
+						</td>
+					</tr>
+					<!-- Enable Social Media Icons -->
+					<tr>
+						<th scope="row">
+							<label for="cdmm_settings[enable_social_media]">
+								<?php _e('Enable Social Media Icons', 'cdmm_domain'); ?>
+							</label>
+						</th>
+						<td>
+							<input name="cdmm_settings[enable_social_media]" id="cdmm_settings[enable_social_media]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['enable_form']) ? $cdmm_options['enable_social_media'] : ''); ?>>
+							<p>
+								<?php _e('Enable linked social media icons'); ?>
+							</p>
+						</td>
+					</tr>
+					<!-- Facebook Profile -->
+					<tr>
+						<th scope="row">
+							<label for="cdmm_settings[facebook]">
+								<?php _e('Facebook Profile Link', 'cdmm_domain'); ?>
+							</label>
+						</th>
+						<td>
+							<input name="cdmm_settings[facebook]" id="cdmm_settings[facebook]" type="text" value="<?php if(!empty($cdmm_options['linkedin'])){ echo $cdmm_options['linkedin']; } ?>" class="widefat">
+							<p>
+								<?php _e('Enter your Facebook profile url'); ?>
+							</p>
+						</td>
+					</tr>
+					<!-- Linkedin Profile -->
+					<tr>
+						<th scope="row">
+							<label for="cdmm_settings[linkedin]">
+								<?php _e('LinkedIn Profile Link', 'cdmm_domain'); ?>
+							</label>
+						</th>
+						<td>
+							<input name="cdmm_settings[linkedin]" id="cdmm_settings[linkedin]" type="text" value="<?php if(!empty($cdmm_options['linkedin'])){ echo $cdmm_options['linkedin']; } ?>" class="widefat">
+							<p>
+								<?php _e('Enter your LinkedIn profile url'); ?>
+							</p>
+						</td>
+					</tr>
+					<!-- Twitter Profile -->
+					<tr>
+						<th scope="row">
+							<label for="cdmm_settings[twitter]">
+								<?php _e('Twitter Profile Link', 'cdmm_domain'); ?>
+							</label>
+						</th>
+						<td>
+							<input name="cdmm_settings[twitter]" id="cdmm_settings[twitter]" type="text" value="<?php if(!empty($cdmm_options['twitter'])){ echo $cdmm_options['twitter']; } ?>" class="widefat">
+							<p>
+								<?php _e('Enter your Twitter profile url'); ?>
+							</p>
+						</td>
+					</tr>
+					<!-- Instagram Profile -->
+					<tr>
+						<th scope="row">
+							<label for="cdmm_settings[instagram]">
+								<?php _e('Instagram Profile Link', 'cdmm_domain'); ?>
+							</label>
+						</th>
+						<td>
+							<input name="cdmm_settings[instagram]" id="cdmm_settings[instagram]" type="text" value="<?php if(!empty($cdmm_options['instagram'])){ echo $cdmm_options['instagram']; } ?>" class="widefat">
+							<p>
+								<?php _e('Enter your Instagram account url'); ?>
+							</p>
+						</td>
+					</tr>
+					<!-- YouTube Profile -->
+					<tr>
+						<th scope="row">
+							<label for="cdmm_settings[youtube]">
+								<?php _e('YouTube Account Link', 'cdmm_domain'); ?>
+							</label>
+						</th>
+						<td>
+							<input name="cdmm_settings[youtube]" id="cdmm_settings[youtube]" type="text" value="<?php if(!empty($cdmm_options['youtube'])){ echo $cdmm_options['youtube']; } ?>" class="widefat">
+							<p>
+								<?php _e('Enter your YouTube account url'); ?>
 							</p>
 						</td>
 					</tr>
