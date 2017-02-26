@@ -4,45 +4,52 @@ $cdmm_options = get_option('cdmm_settings');
 
 function cdmm_set_mode() {
 	if(!current_user_can('edit_theme_options') || !is_user_logged_in()){
-		// Get site & plugin settings
+
+		// Get site settings
 		$site_language = get_bloginfo('language');
 		$site_charset = get_bloginfo('charset');
 		$site_name = get_bloginfo('name');
-		$cdmm_options = get_option('cdmm_settings');
-		$targetDate = isset($cdmm_options['target_date']) ? $cdmm_options['target_date'] : null;
-		$message = isset($cdmm_options['message']) ? $cdmm_options['message'] : null;
-		$background_image = isset($cdmm_options['background_image_url']) ? $cdmm_options['background_image_url'] : null;
-		$logo_image = isset($cdmm_options['logo_image_url']) ? $cdmm_options['logo_image_url'] : null;
-		$enable_form = isset($cdmm_options['enable_form']) ? $cdmm_options['enable_form'] : null;
-		$recipient = get_option('admin_email');
-		$subject = 'Message from Maintenance Form';
-		$wrapper_color = isset($cdmm_options['info_background_color']) ? $cdmm_options['info_background_color'] : null;
-		$text_color = isset($cdmm_options['text_color']) ? $cdmm_options['text_color'] : '#cccccc';
-		$time_color = isset($cdmm_options['countdown_background_color']) ? $cdmm_options['countdown_background_color'] : '#dddddd';
-		$countdown_font = isset($cdmm_options['countdown_font']) ? $cdmm_options['countdown_font'] : 'Roberto Mono';
-		$template = isset($cdmm_options['template']) ? $cdmm_options['template'] : 'Fixed Center';
-		$enable_animation = isset($cdmm_options['enable_active_background']) ? $cdmm_options['enable_active_background'] : null;
-		$overlay = isset($cdmm_options['overlay']) ? $cdmm_options['overlay'] : null;
-		if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = $cdmm_options['facebook']; }
-		if(!empty($cdmm_options['twitter'])) { $social_media['twitter'] = $cdmm_options['twitter']; }
-		if(!empty($cdmm_options['linkedin'])) { $social_media['linkedin'] = $cdmm_options['linkedin']; }
-		if(!empty($cdmm_options['instagram'])) { $social_media['instagram'] = $cdmm_options['instagram']; }
-		if(!empty($cdmm_options['youtube'])) { $social_media['youtube'] = $cdmm_options['youtube']; }
 
+		// Get and escape plugin settings so can be passed straight to template files
+		$cdmm_options = get_option('cdmm_settings');
+		$targetDate = isset($cdmm_options['target_date']) ? esc_attr($cdmm_options['target_date']) : null;
+		$message = isset($cdmm_options['message']) ? esc_html($cdmm_options['message']) : null;
+		$background_image = isset($cdmm_options['background_image_url']) ? esc_url($cdmm_options['background_image_url']) : null;
+		$logo_image = isset($cdmm_options['logo_image_url']) ? esc_url($cdmm_options['logo_image_url']) : null;
+		$enable_form = isset($cdmm_options['enable_form']) ? esc_attr($cdmm_options['enable_form']) : null;
+		$recipient = esc_html(get_option('admin_email'));
+		$subject = 'Message from Maintenance Form';
+		$wrapper_color = isset($cdmm_options['info_background_color']) ? esc_attr($cdmm_options['info_background_color']) : null;
+		$text_color = isset($cdmm_options['text_color']) ? esc_attr($cdmm_options['text_color']) : '#cccccc';
+		$time_color = isset($cdmm_options['countdown_background_color']) ? esc_attr($cdmm_options['countdown_background_color']) : '#dddddd';
+		$countdown_font = isset($cdmm_options['countdown_font']) ? esc_attr($cdmm_options['countdown_font']) : 'Roberto Mono';
+		$template = isset($cdmm_options['template']) ? esc_attr($cdmm_options['template']) : 'Fixed Center';
+		$enable_animation = isset($cdmm_options['enable_active_background']) ? esc_attr($cdmm_options['enable_active_background']) : null;
+		$overlay = isset($cdmm_options['overlay']) ? esc_attr($cdmm_options['overlay']) : null;
+		if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = esc_url($cdmm_options['facebook']); }
+		if(!empty($cdmm_options['twitter'])) { $social_media['twitter'] = esc_url($cdmm_options['twitter']); }
+		if(!empty($cdmm_options['linkedin'])) { $social_media['linkedin'] = esc_url($cdmm_options['linkedin']); }
+		if(!empty($cdmm_options['instagram'])) { $social_media['instagram'] = esc_url($cdmm_options['instagram']); }
+		if(!empty($cdmm_options['youtube'])) { $social_media['youtube'] = esc_url($cdmm_options['youtube']); }
+
+		// check if overlay set
 		if($overlay == 'None') {
 			$overlay = null;
 		} else {
+			// overlay name == image-name, so convert to lowercase and replace ' ' with '-'
 			$overlay = strtolower($overlay);
 			$overlay = preg_replace('/\s+/', '-', $overlay);
-			$overlay_opacity = isset($cdmm_options['overlay_opacity']) ? ($cdmm_options['overlay_opacity'] / 10) : '0.3';
+			$overlay_opacity = isset($cdmm_options['overlay_opacity']) ? (esc_attr($cdmm_options['overlay_opacity']) / 10) : '0.3';
 		}
 
 		// check to see if background image has been set, if not, use default
 		if(!$background_image) {
 			$background_image = plugins_url() . '/countdown-maintenance-mode/img/wall.jpg';
 		}
+
 		header("Content-Type: text/html");
 
+		// Check which template has been selected, if none selected then use default
 		if($template) {
 			switch($template) {
 				case 'Fixed Center':
@@ -56,7 +63,7 @@ function cdmm_set_mode() {
 			// load in default template
 			include('/../templates/fixed_center_template/fixed_center_template.php');
 		}
-		die();
+		exit();
 	}
 }
 

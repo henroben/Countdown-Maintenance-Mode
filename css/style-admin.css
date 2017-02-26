@@ -22,6 +22,21 @@
     cursor: pointer;
     color: transparent;
 }
+.tab-content {
+    background-color: #fff;
+    margin-top: -0px;
+    padding: 0px;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.tab-content .tab-pane {
+    padding: 15px;
+}
+.tab-content .tab-pane .row {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 .roberto-mono {
     font-family: 'Roboto Mono', monospace;
 }
