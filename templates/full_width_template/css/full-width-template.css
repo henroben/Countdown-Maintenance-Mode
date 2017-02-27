@@ -11,9 +11,6 @@
     padding: 0px;
     margin: 0px;
 }
-.jumbotron {
-    background: rgba(255, 255, 255, 0);
-}
 
 .wrapper {
     height: auto !important;
@@ -101,18 +98,18 @@
     z-index: 200;
 }
 .row {
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 1.25%;
+    margin-bottom: 1.25%;
 }
 @media (max-width: 1024px) {
     .row {
-        margin-top: 5vh;
-        margin-bottom: 5vh;
+        margin-top: 1.2%;
+        margin-bottom: 1.2%;
     }
 }
 @media (max-width: 768px) {
     .row {
-        margin-top: 18vh;
-        margin-bottom: 18vh;
+        margin-top: 18%;
+        margin-bottom: 18%;
     }
 }

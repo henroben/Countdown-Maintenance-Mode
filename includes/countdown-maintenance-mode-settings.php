@@ -79,7 +79,7 @@ function cdmm_options_content() {
 									</label>
 								</div>
 								<div class="col-md-9">
-									<input name="cdmm_settings[target_date]" id="cdmm_settings[target_date]" type="datetime-local" value="<?php echo $cdmm_options['target_date']; ?>">
+									<input name="cdmm_settings[target_date]" id="cdmm_settings[target_date]" type="datetime-local" value="<?php echo $cdmm_options['target_date']; ?>" class="date-picker">
 									<p class="description">
 										<?php _e('Enter a go live date to enable the countdown, clear date to remove countdown. Format DD/MM/YYYY HH:MM', 'cdmm_domain'); ?>
 									</p>
@@ -124,14 +124,14 @@ function cdmm_options_content() {
 								<div class="col-md-3">
 									<input name="cdmm_settings[logo_image_url]" id="cdmm_settings[logo_image_url]" type="hidden" class="widefat logo_image_url" value="<?php echo $cdmm_options['logo_image_url']; ?>">
 									<input id="upload_logo" type="button" class="btn btn-primary" value="<?php _e( 'Upload', 'cdmm_domain' ); ?>" />
-									<?php if ( '' != $cdmm_options['logo_image_url'] ): ?>
+									<?php if ( 'Delete' != $cdmm_options['logo_image_url'] ): ?>
 <!--										<input id="delete_logo_button" name="cdmm_settings[logo_image_url]" type="submit" class="button" value="--><?php //_e( '', 'cdmm_domain' ); ?><!--" />-->
 										<input id="cdmm_settings[logo_image_url]" name="cdmm_settings[logo_image_url]" type="submit" class="btn btn-danger" value="<?php _e( 'Delete', 'cdmm_domain' ); ?>" />
 									<?php endif; ?>
 								</div>
 								<div class="col-md-6">
 									<div id="upload_logo_preview">
-										<img style="max-width:200px; background: #cccccc;" src="<?php if(!empty($cdmm_options['logo_image_url'])) { echo esc_url( $cdmm_options['logo_image_url'] ); } ?>" />
+										<img style="max-width:200px; background: #cccccc;" src="<?php if($cdmm_options['logo_image_url'] != 'Delete') { echo esc_url( $cdmm_options['logo_image_url'] ); } ?>" />
 									</div>
 								</div>
 							</div>
@@ -144,14 +144,14 @@ function cdmm_options_content() {
 								<div class="col-md-3">
 									<input name="cdmm_settings[background_image_url]" id="cdmm_settings[background_image_url]" type="hidden" class="widefat background_image_url" value="<?php if(!empty($cdmm_options['background_image_url'])){ echo $cdmm_options['background_image_url']; } ?>">
 									<input id="upload_background" type="button" class="btn btn-primary" value="<?php _e( 'Upload', 'cdmm_domain' ); ?>" />
-									<?php if ( '' != $cdmm_options['background_image_url'] ): ?>
+									<?php if ( 'Delete' != $cdmm_options['background_image_url'] ): ?>
 <!--										<input id="delete_background_button" name="cdmm_settings[background_image_url]" type="submit" class="button" value="--><?php //_e( '', 'cdmm_domain' ); ?><!--" />-->
 										<input id="cdmm_settings[background_image_url]" name="cdmm_settings[background_image_url]" type="submit" class="btn btn-danger" value="<?php _e( 'Delete', 'cdmm_domain' ); ?>" />
 									<?php endif; ?>
 								</div>
 								<div class="col-md-6">
 									<div id="upload_background_preview">
-										<img style="max-width:200px;" src="<?php if(!empty($cdmm_options['background_image_url'])) { echo esc_url( $cdmm_options['background_image_url'] ); } ?>" />
+										<img style="max-width:200px;" src="<?php if($cdmm_options['background_image_url'] != 'Delete') { echo esc_url( $cdmm_options['background_image_url'] ); } ?>" />
 									</div>
 								</div>
 							</div>
@@ -363,7 +363,7 @@ function cdmm_options_content() {
 									</label>
 								</div>
 								<div class="col-md-6">
-									<input name="cdmm_settings[facebook]" id="cdmm_settings[facebook]" type="text" value="<?php if(!empty($cdmm_options['linkedin'])){ echo $cdmm_options['linkedin']; } ?>" class="widefat">
+									<input name="cdmm_settings[facebook]" id="cdmm_settings[facebook]" type="text" value="<?php if(!empty($cdmm_options['facebook'])){ echo $cdmm_options['facebook']; } ?>" class="widefat">
 								</div>
 								<div class="col-md-3">
 									<p>
@@ -432,9 +432,9 @@ function cdmm_options_content() {
 								</div>
 							</div>
 						</div>
-						<div id="preview" class="tab-pane fade">
-							<h3>Preview</h3>
-							<iframe src="" frameborder="0" style="width: 800px; height: 600px;"></iframe>
+						<div id="preview" class="tab-pane fade" style="text-align: center;">
+
+							<iframe src="<?php echo plugins_url().'/countdown-maintenance-mode/includes/preview-mode.php?options=' . urlencode(json_encode($cdmm_options)) . '&base=' . urlencode(plugins_url()); ?>" frameborder="0" style="width: 1024px; height: 576px;"></iframe>
 						</div>
 					</div>
 					<div class="row">

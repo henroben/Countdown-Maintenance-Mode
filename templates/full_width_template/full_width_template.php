@@ -1,3 +1,10 @@
+<?php
+if($preview == true) {
+	function plugins_url() {
+		return '../..';
+	}
+}
+?>
 <!DOCTYPE html>
 <html lang="<?php echo $site_language; ?>">
 	<head>
@@ -109,7 +116,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			<?php
-			if($social_media) {
+			if($enable_social_media) {
 				echo '
 				<div class="row">
 					<div class="col-md-2"></div>

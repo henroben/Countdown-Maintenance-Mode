@@ -26,6 +26,7 @@ function cdmm_set_mode() {
 		$template = isset($cdmm_options['template']) ? esc_attr($cdmm_options['template']) : 'Fixed Center';
 		$enable_animation = isset($cdmm_options['enable_active_background']) ? esc_attr($cdmm_options['enable_active_background']) : null;
 		$overlay = isset($cdmm_options['overlay']) ? esc_attr($cdmm_options['overlay']) : null;
+		$enable_social_media = isset($cdmm_options['enable_social_media']) ? esc_attr($cdmm_options['enable_social_media']) : null;
 		if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = esc_url($cdmm_options['facebook']); }
 		if(!empty($cdmm_options['twitter'])) { $social_media['twitter'] = esc_url($cdmm_options['twitter']); }
 		if(!empty($cdmm_options['linkedin'])) { $social_media['linkedin'] = esc_url($cdmm_options['linkedin']); }
@@ -53,15 +54,15 @@ function cdmm_set_mode() {
 		if($template) {
 			switch($template) {
 				case 'Fixed Center':
-					include('/../templates/fixed_center_template/fixed_center_template.php');
+					include_once('/../templates/fixed_center_template/fixed_center_template.php');
 					break;
 				case 'Full Width':
-					include('/../templates/full_width_template/full_width_template.php');
+					include_once('/../templates/full_width_template/full_width_template.php');
 					break;
 			}
 		} else {
 			// load in default template
-			include('/../templates/fixed_center_template/fixed_center_template.php');
+			include_once('/../templates/fixed_center_template/fixed_center_template.php');
 		}
 		exit();
 	}

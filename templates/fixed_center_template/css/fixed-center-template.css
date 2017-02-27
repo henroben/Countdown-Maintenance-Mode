@@ -140,3 +140,11 @@
 .center-wrapper:hover .social-media {
     opacity: 0.7; }
 
+@media (max-width: 1024px) {
+    .center-wrapper {
+        height: 68%;
+    }
+    .center-wrapper .text {
+        font-size: 1em;
+    }
+}

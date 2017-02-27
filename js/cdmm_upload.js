@@ -4,6 +4,9 @@ jQuery(document).ready(function($) {
      $('.info-background-color').wpColorPicker();
      $('.countdown-background-color').wpColorPicker();
 
+    // enable date picker
+    $( ".date-picker" ).datepicker({dateFormat: "yy-mm-dd"});
+
     var imgType = '';
     $('#upload_logo').click(function() {
         imgType = 'logo';
