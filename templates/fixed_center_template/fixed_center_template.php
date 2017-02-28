@@ -188,7 +188,7 @@ if($preview == true) {
 				width: $(window).outerWidth(),
 				height: $(window).outerHeight()
 			})
-		})
+		});
 	</script>';
 	}
 	echo '</body>

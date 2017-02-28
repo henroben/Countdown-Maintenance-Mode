@@ -76,7 +76,7 @@ if($preview == true) {
 				<div class="col-md-12">
 					<div class="col-md-2"></div>
 					<div class="col-md-8">
-						<div id="DateCountdown" data-date="<?php echo $targetDate; ?>" style="width: 100%; height: auto; padding: 0px; box-sizing: border-box; color: <?php echo $text_color; ?>"></div>
+						<div id="DateCountdown" data-date="<?php echo $targetDate; ?>" style="width: <?php if($preview) { echo '600px'; } else { echo "100%"; } ?>; height: auto; padding: 0px; box-sizing: border-box; color: <?php echo $text_color; ?>"></div>
 					</div>
 					<div class="col-md-2"></div>
 				</div>

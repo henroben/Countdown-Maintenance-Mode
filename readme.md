@@ -14,6 +14,8 @@ Functionality:
 	Select background / countdown font / countdown background colours
 	Select layout template
 	Enable / select overlay pattern options
+	Enable linked icons to social media
+	Preview option
 	
 TODO
 	Validate and sanitise input

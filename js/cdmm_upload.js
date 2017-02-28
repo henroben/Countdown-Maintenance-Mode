@@ -5,7 +5,10 @@ jQuery(document).ready(function($) {
      $('.countdown-background-color').wpColorPicker();
 
     // enable date picker
-    $( ".date-picker" ).datepicker({dateFormat: "yy-mm-dd"});
+    $( ".date-picker" ).datetimepicker({
+        dateFormat: "yy-mm-dd",
+        separator: "T"
+    });
 
     var imgType = '';
     $('#upload_logo').click(function() {

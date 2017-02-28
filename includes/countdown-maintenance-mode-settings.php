@@ -81,7 +81,7 @@ function cdmm_options_content() {
 								<div class="col-md-9">
 									<input name="cdmm_settings[target_date]" id="cdmm_settings[target_date]" type="datetime-local" value="<?php echo $cdmm_options['target_date']; ?>" class="date-picker">
 									<p class="description">
-										<?php _e('Enter a go live date to enable the countdown, clear date to remove countdown. Format DD/MM/YYYY HH:MM', 'cdmm_domain'); ?>
+										<?php _e('Enter a go live date to enable the countdown, clear date to remove countdown. Format YY-MM-DD HH:MM', 'cdmm_domain'); ?>
 									</p>
 								</div>
 							</div>
