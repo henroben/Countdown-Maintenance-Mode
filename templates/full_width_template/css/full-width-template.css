@@ -67,6 +67,8 @@
     top: 0;
     z-index: 1;
 }
+.message {
+    text-align: center; }
 #form-msg {
     display: block;
     width: 100%;
@@ -75,6 +77,10 @@
     padding-top: 3px;
     padding-bottom: 3px;
 }
+/* Form */
+.btn-primary:hover {
+    background-color: #777;
+    border-color: #777; }
 /* Social Media Icons */
 .social-media {
     text-align: center; }

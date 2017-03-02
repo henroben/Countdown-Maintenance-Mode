@@ -54,15 +54,15 @@ function cdmm_set_mode() {
 		if($template) {
 			switch($template) {
 				case 'Fixed Center':
-					include_once('/../templates/fixed_center_template/fixed_center_template.php');
+					include_once(dirname( __FILE__ ) . '../../templates/fixed_center_template/fixed_center_template.php');
 					break;
 				case 'Full Width':
-					include_once('/../templates/full_width_template/full_width_template.php');
+					include_once(dirname( __FILE__ ) . '../../templates/full_width_template/full_width_template.php');
 					break;
 			}
 		} else {
 			// load in default template
-			include_once('/../templates/fixed_center_template/fixed_center_template.php');
+			include_once(dirname( __FILE__ ) . '../../countdown-maintenance-mode/templates/fixed_center_template/fixed_center_template.php');
 		}
 		exit();
 	}

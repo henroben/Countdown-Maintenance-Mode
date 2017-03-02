@@ -12,6 +12,7 @@ jQuery(document).ready(function($) {
 
     var imgType = '';
     $('#upload_logo').click(function() {
+        console.warn('upload logo called');
         imgType = 'logo';
         tb_show('Upload a logo image', 'media-upload.php?referer=cdmm_settings&type=image&TB_iframe=true&post_id=0', false);
         return false;
@@ -22,8 +23,10 @@ jQuery(document).ready(function($) {
         return false;
     });
     window.send_to_editor = function(html) {
-
-        var image_url = $(html).attr('src');
+        console.warn($(html).attr('src'));
+        console.warn($(html).attr('href'));
+        var image_url = $(html).attr('href');
+        console.warn('send_to_editor called', image_url);
         if(imgType == 'logo') {
             $('.logo_image_url').val(image_url);
             tb_remove();

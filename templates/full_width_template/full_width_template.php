@@ -4,6 +4,35 @@ if($preview == true) {
 		return '../..';
 	}
 }
+function colourCreator($colour, $per)
+{
+	$colour = substr( $colour, 1 ); // Removes first character of hex string (#)
+	$rgb = ''; // Empty variable
+	$per = $per/100*255; // Creates a percentage to work with. Change the middle figure to control colour temperature
+
+	if  ($per < 0 ) // Check to see if the percentage is a negative number
+	{
+		// DARKER
+		$per =  abs($per); // Turns Neg Number to Pos Number
+		for ($x=0;$x<3;$x++)
+		{
+			$c = hexdec(substr($colour,(2*$x),2)) - $per;
+			$c = ($c < 0) ? 0 : dechex($c);
+			$rgb .= (strlen($c) < 2) ? '0'.$c : $c;
+		}
+	}
+	else
+	{
+		// LIGHTER
+		for ($x=0;$x<3;$x++)
+		{
+			$c = hexdec(substr($colour,(2*$x),2)) + $per;
+			$c = ($c > 255) ? 'ff' : dechex($c);
+			$rgb .= (strlen($c) < 2) ? '0'.$c : $c;
+		}
+	}
+	return '#'.$rgb;
+}
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $site_language; ?>">
@@ -67,7 +96,7 @@ if($preview == true) {
 			</div>
 			<div class="row">
 				<div class="col-md-2"></div>
-				<div class="col-md-8">
+				<div class="col-md-8 message">
 					<h2 style="color: <?php echo $text_color; ?>"><?php echo $message; ?></h2>
 				</div>
 				<div class="col-md-2"></div>
@@ -100,7 +129,16 @@ if($preview == true) {
 									</div>
 									<div class="col-xs-12 col-md-4 no-padding">
 										<div class="form-group">
-											<input type="submit" class="btn btn-primary btn-block right-radius" name="subscriber_submit" value="SEND" style="background-color: ' . $time_color .'; border-color: ' . $time_color .';">
+											<style>
+												.btn-primary {
+												    background-color: ' . $time_color .';
+												    border-color: ' . $time_color .';
+												     }
+												.btn-primary:hover {
+												    background-color: ' . colourCreator($time_color, -20) .';
+												    border-color: ' . colourCreator($time_color, -20) .'; }
+											</style>
+											<input type="submit" class="btn btn-primary btn-block right-radius" name="subscriber_submit" value="SEND">
 										</div>
 									</div>
 								</form>

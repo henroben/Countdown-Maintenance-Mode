@@ -433,8 +433,7 @@ function cdmm_options_content() {
 							</div>
 						</div>
 						<div id="preview" class="tab-pane fade" style="text-align: center;">
-
-							<iframe src="<?php echo plugins_url().'/countdown-maintenance-mode/includes/preview-mode.php?options=' . urlencode(json_encode($cdmm_options)) . '&base=' . urlencode(plugins_url()); ?>" frameborder="0" style="width: 1024px; height: 576px;"></iframe>
+							<iframe src="<?php echo plugins_url() . '/countdown-maintenance-mode/includes/preview-mode.php?options=' . urlencode(json_encode($cdmm_options)) . '&base=' . urlencode(plugins_url()); ?>" frameborder="0" style="width: 1024px; height: 576px;"></iframe>
 						</div>
 					</div>
 					<div class="row">
