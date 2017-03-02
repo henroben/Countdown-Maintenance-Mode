@@ -23,9 +23,12 @@ jQuery(document).ready(function($) {
         return false;
     });
     window.send_to_editor = function(html) {
-        console.warn($(html).attr('src'));
-        console.warn($(html).attr('href'));
+        console.warn('src', $(html).attr('src'));
+        console.warn('href', $(html).attr('href'));
         var image_url = $(html).attr('href');
+        if(!image_url) {
+            image_url = $(html).attr('src');
+        }
         console.warn('send_to_editor called', image_url);
         if(imgType == 'logo') {
             $('.logo_image_url').val(image_url);

@@ -42,11 +42,15 @@ function colourCreator($colour, $per)
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/templates/full_width_template/css/full-width-template.css">
-		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/TimeCircles.css">
+		<?php if($targetDate): ?>
+			<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/TimeCircles.css">
+		<?php endif; ?>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.interactive_bg.js"></script>
 		<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/main.js"></script>
-		<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/TimeCircles.js"></script>
+		<?php if($targetDate): ?>
+			<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/TimeCircles.js"></script>
+		<?php endif; ?>
 		<?php
 		if($countdown_font) {
 			switch($countdown_font) {
@@ -101,23 +105,25 @@ function colourCreator($colour, $per)
 				</div>
 				<div class="col-md-2"></div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div class="col-md-2"></div>
-					<div class="col-md-8">
-						<div id="DateCountdown" data-date="<?php echo $targetDate; ?>" style="width: <?php if($preview) { echo '600px'; } else { echo "100%"; } ?>; height: auto; padding: 0px; box-sizing: border-box; color: <?php echo $text_color; ?>"></div>
+			<?php if($targetDate): ?>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<div id="DateCountdown" data-date="<?php echo $targetDate; ?>" style="width: <?php if($preview) { echo '600px'; } else { echo "100%"; } ?>; height: auto; padding: 0px; box-sizing: border-box; color: <?php echo $text_color; ?>"></div>
+						</div>
+						<div class="col-md-2"></div>
 					</div>
-					<div class="col-md-2"></div>
 				</div>
-			</div>
+			<?php endif; ?>
 			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
+				<div class="col-sm-1 col-md-2"></div>
+				<div class="col-sm-10 col-md-8">
 					<?php
 						if($enable_form) {
 							echo '<div class="row">
 								<form action="' . plugins_url() . '/countdown-maintenance-mode/includes/countdown-maintenance-mode-mailer.php" id="maintenance-form" method="post">
-									<div class="col-xs-12 col-md-8 no-padding">
+									<div class="col-xs-12 col-sm-8 col-md-8 no-padding">
 										<div class="form-group">
 											<div class="input-group">
 												<span class="input-group-addon" style="color: ' . $text_color . '; background-color: ' . $time_color . '; border-color: ' . $time_color . ';"><i class="fa fa-envelope-o fa-fw"></i></span>
@@ -127,16 +133,19 @@ function colourCreator($colour, $per)
 											<input type="hidden" name="subject" value="' . $subject . '">
 										</div>
 									</div>
-									<div class="col-xs-12 col-md-4 no-padding">
+									<div class="col-xs-12 col-sm-4 col-md-4 no-padding">
 										<div class="form-group">
 											<style>
-												.btn-primary {
+												.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary:visited {
 												    background-color: ' . $time_color .';
 												    border-color: ' . $time_color .';
 												     }
 												.btn-primary:hover {
 												    background-color: ' . colourCreator($time_color, -20) .';
 												    border-color: ' . colourCreator($time_color, -20) .'; }
+												.btn-primary:active:focus {
+												    background-color: ' . colourCreator($time_color, -30) .';
+												    border-color: ' . colourCreator($time_color, -30) .'; }    
 											</style>
 											<input type="submit" class="btn btn-primary btn-block right-radius" name="subscriber_submit" value="SEND">
 										</div>
@@ -151,7 +160,7 @@ function colourCreator($colour, $per)
 						}
 					?>
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-sm-1 col-md-2"></div>
 			</div>
 			<?php
 			if($enable_social_media) {
