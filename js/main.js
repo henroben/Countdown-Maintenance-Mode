@@ -1,7 +1,9 @@
 jQuery(document).ready(
     function($) {
 
-        CountDownTimer(target_date, 'countdown');
+        if((typeof target_date !== "undefined") && (target_date !== null)) {
+            CountDownTimer(target_date, 'countdown');
+        }
 
         function CountDownTimer(dt, id)
         {
@@ -43,7 +45,6 @@ jQuery(document).ready(
 
             timer = setInterval(showRemaining, 1000);
         }
-
         $('#maintenance-form').submit(
             function (e) {
                 e.preventDefault();

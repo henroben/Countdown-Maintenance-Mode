@@ -1,6 +1,8 @@
 <?php
-$cdmm_options = get_option('cdmm_settings');
-// get user settings
+
+/*
+ * Get and escape all settings for plugin, then pass through to relevant template file
+ */
 
 function cdmm_set_mode() {
 	if(!current_user_can('edit_theme_options') || !is_user_logged_in()){

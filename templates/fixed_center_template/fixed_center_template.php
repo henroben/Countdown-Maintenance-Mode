@@ -10,10 +10,12 @@ if($preview == true) {
 <head>
 	<meta charset="'. $site_charset . '">
 	<title><?php echo $site_name; ?> is currently undergoing maintenance</title>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/bootstrap.min.css">
+	<?php if($enable_social_media): ?>
+		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/font-awesome-4.7.0/css/font-awesome.min.css">
+	<?php endif; ?>
 	<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/templates/fixed_center_template/css/fixed-center-template.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.min.js"></script>
 	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.interactive_bg.js"></script>
 	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/main.js"></script>
 	<?php
@@ -126,34 +128,7 @@ if($preview == true) {
 		<div class="col-xs-1"></div>
 	</div>';
 	if($enable_form) {
-		echo '<div class="row">
-			<div class="col-xs-1"></div>
-			<form action="' . plugins_url() . '/countdown-maintenance-mode/includes/countdown-maintenance-mode-mailer.php" id="maintenance-form" method="post">
-				<div class="col-xs-7 no-padding">
-					<div class="form-group">
-						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-							<input class="form-control left-radius" type="text" placeholder="Please enter your email address" id="email" name="email">
-						</div>
-						<input type="hidden" name="recipient" value="' . $recipient . '">
-						<input type="hidden" name="subject" value="' . $subject . '">
-					</div>
-				</div>
-				<div class="col-xs-3 no-padding">
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-block right-radius" name="subscriber_submit" value="SEND">
-					</div>
-				</div>
-			</form>
-			<div class="col-xs-1"></div>
-		</div>
-		<div class="row">
-			<div class="col-xs-1"></div>
-			<div class="col-xs-10">
-				<div id="form-msg"></div>
-			</div>
-			<div class="col-xs-1"></div>
-		</div>';
+		include(dirname( __FILE__ ) . '/includes/form.php');
 	}
 	if($enable_social_media) {
 		echo '
