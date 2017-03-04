@@ -43,6 +43,7 @@ $countdown_font = isset($cdmm_options['countdown_font']) ? $cdmm_options['countd
 $template = isset($cdmm_options['template']) ? $cdmm_options['template'] : 'Fixed Center';
 $enable_animation = isset($cdmm_options['enable_active_background']) ? $cdmm_options['enable_active_background'] : null;
 $background_effect = isset($cdmm_options['background_effect']) ? $cdmm_options['background_effect'] : 'None';
+$blur_amount = isset($cdmm_options['blur_amount']) ? $cdmm_options['blur_amount'] : '25';
 $overlay = isset($cdmm_options['overlay']) ? $cdmm_options['overlay'] : null;
 $enable_social_media = isset($cdmm_options['enable_social_media']) ? $cdmm_options['enable_social_media'] : null;
 if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = $cdmm_options['facebook']; }

@@ -79,7 +79,7 @@ function cdmm_options_content() {
 									</label>
 								</div>
 								<div class="col-md-6">
-									<select name="cdmm_settings[background_effect]" id="cdmm_settings[background_effect]" class="form-control">
+									<select name="cdmm_settings[background_effect]" id="cdmm_settings[background_effect]" class="form-control background-effect-select">
 										<?php
 										$option_values = array(
 											'None',
@@ -102,8 +102,23 @@ function cdmm_options_content() {
 									</select>
 								</div>
 								<div class="col-md-3">
-									<p>
+									<p id="background-effect-description">
 										<?php _e('Select background image effect', 'cdmm_domain'); ?>
+									</p>
+								</div>
+							</div>
+							<div class="row background-blur">
+								<div class="col-md-3">
+									<label for="cdmm_settings[blur_amount]">
+										<?php _e('Set Blur Amount', 'cdmm_domain'); ?>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<input type="range" name="cdmm_settings[blur_amount]" id="cdmm_settings[blur_amount]" min="0" max="100" value="<?php if(!empty($cdmm_options['blur_amount'])){ echo $cdmm_options['blur_amount']; } ?>">
+								</div>
+								<div class="col-md-3">
+									<p>
+										<?php _e('Adjust the amount of background blur', 'cdmm_domain'); ?>
 									</p>
 								</div>
 							</div>

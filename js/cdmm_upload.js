@@ -1,4 +1,25 @@
 jQuery(document).ready(function($) {
+
+    // check which background effect is selected and show relevant options
+    switch($('.background-effect-select').val()) {
+        case 'None':
+            $('#background-effect-description').text('Select a background effect');
+            $('.background-blur').hide();
+            break;
+        case 'Interactive Background Image':
+            $('#background-effect-description').text('Animates on mouse movement or mobile device movement.');
+            $('.background-blur').hide();
+            break;
+        case 'Blur Background Image':
+            $('#background-effect-description').text('Blurs the current background image. Suitable for any image.');
+            $('.background-blur').show();
+            break;
+        case 'Halftone Background Image':
+            $('#background-effect-description').text('Creates halftone version of current background image, animates on mouse movement. Suits a simple high contrast, low resolution image best.');
+            $('.background-blur').hide();
+            break;
+    }
+
     // enable color picker
      $('.text-color').wpColorPicker();
      $('.info-background-color').wpColorPicker();
@@ -10,6 +31,31 @@ jQuery(document).ready(function($) {
         separator: "T"
     });
 
+    // change background effect description on selection
+    $('.background-effect-select').change(function() {
+        var selected = $(this).val();
+
+        switch(selected) {
+            case 'None':
+                $('#background-effect-description').text('Select a background effect');
+                $('.background-blur').slideUp();
+                break;
+            case 'Interactive Background Image':
+                $('#background-effect-description').text('Animates on mouse movement or mobile device movement.');
+                $('.background-blur').slideUp();
+                break;
+            case 'Blur Background Image':
+                $('#background-effect-description').text('Blurs the current background image. Suitable for any image.');
+                $('.background-blur').slideDown();
+                break;
+            case 'Halftone Background Image':
+                $('#background-effect-description').text('Creates halftone version of current background image, animates on mouse movement. Suits a simple high contrast, low resolution image best.');
+                $('.background-blur').slideUp();
+                break;
+        }
+    });
+
+    // upload script to grab url of image upload from media uploader
     var imgType = '';
     $('#upload_logo').click(function() {
         console.warn('upload logo called');

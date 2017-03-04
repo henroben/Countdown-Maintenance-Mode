@@ -208,7 +208,7 @@ function colourCreator($colour, $per)
 							$(document).ready(function(){
 								$("#blur-background").backgroundBlur({
 								    imageURL : "' . $background_image . '",
-								    blurAmount : 20,
+								    blurAmount : ' . $blur_amount . ',
 								    imageClass : "bg-blur",
 								    duration: 1000, // If the image needs to be faded in, how long that should take
 								    endOpacity : 1 // Specify the final opacity that the image will have

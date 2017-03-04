@@ -74,7 +74,7 @@ if($preview == true) {
 					if($overlay){
 						echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
 					}
-					echo '<div id="blur-background" class="image-background"></div>';
+					echo '<div id="blur-background" class="bg"></div>';
 					break;
 				case 'Halftone Background Image':
 					if($overlay){
@@ -210,7 +210,7 @@ if($preview == true) {
 						$(document).ready(function(){
 							$("#blur-background").backgroundBlur({
 							    imageURL : "' . $background_image . '",
-							    blurAmount : 20,
+							    blurAmount : ' . $blur_amount . ',
 							    imageClass : "bg-blur",
 							    duration: 1000, // If the image needs to be faded in, how long that should take
 							    endOpacity : 1 // Specify the final opacity that the image will have
