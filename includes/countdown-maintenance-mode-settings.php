@@ -122,6 +122,21 @@ function cdmm_options_content() {
 									</p>
 								</div>
 							</div>
+							<div class="row background-halftone">
+								<div class="col-md-3">
+									<label for="cdmm_settings[is_additive]">
+										<?php _e('Is Additive', 'cdmm_domain'); ?>
+									</label>
+								</div>
+								<div class="col-md-1">
+									<input name="cdmm_settings[is_additive]" id="cdmm_settings[is_additive]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['is_additive']) ? $cdmm_options['is_additive'] : ''); ?> >
+								</div>
+								<div class="col-md-8">
+									<p>
+										<?php _e('Set if additive, checked for 3 colour dots with dark background, unchecked for white background and black dots. Warning: checked version is more resource hungry, if preview background is blank, try closing some tabs', 'cdmm_domain'); ?>
+									</p>
+								</div>
+							</div>
 							<div class="row">
 								<div class="col-md-3">
 									<label for="cdmm_settings[target_date]">

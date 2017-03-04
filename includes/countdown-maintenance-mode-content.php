@@ -29,6 +29,7 @@ function cdmm_set_mode() {
 		$enable_animation = isset($cdmm_options['enable_active_background']) ? esc_attr($cdmm_options['enable_active_background']) : null;
 		$background_effect = isset($cdmm_options['background_effect']) ? esc_attr($cdmm_options['background_effect']) : 'None';
 		$blur_amount = isset($cdmm_options['blur_amount']) ? esc_attr($cdmm_options['blur_amount']) : '25';
+		$is_additive = isset($cdmm_options['is_additive']) ? esc_attr($cdmm_options['is_additive']) : null;
 		$overlay = isset($cdmm_options['overlay']) ? esc_attr($cdmm_options['overlay']) : null;
 		$enable_social_media = isset($cdmm_options['enable_social_media']) ? esc_attr($cdmm_options['enable_social_media']) : null;
 		if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = esc_url($cdmm_options['facebook']); }

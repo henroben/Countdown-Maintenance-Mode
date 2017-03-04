@@ -114,6 +114,12 @@ function colourCreator($colour, $per)
 						}
 						echo '<img id="breathing-halftone" class="halftone" src="' . $background_image . '" data-src="' . $background_image . '" />';
 						break;
+					default:
+						if($overlay){
+							echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
+						}
+						echo '<div class="image-background" style="background: url(' . $background_image . ') no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;"></div>';
+						break;
 				}
 			} else {
 				if($overlay){
@@ -228,7 +234,13 @@ function colourCreator($colour, $per)
 					                // oscAmplitude: 0.3
 					                // oscPeriod: 2
 					                // initVelocity: 0.01,
-					                isAdditive: true,
+					                isAdditive: ';
+									if($is_additive) {
+										echo 'true';
+									} else {
+										echo 'false';
+									}
+									echo ',
 					                // isRadial: true,
 					                // friction: 0.2,
 					                // isChannelLens: false,
@@ -240,7 +252,7 @@ function colourCreator($colour, $per)
 					                // activeForce: 0.01
 					            })
 					        };
-					</script>';
+						</script>';
 						break;
 				}
 			}
