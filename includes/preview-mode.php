@@ -42,6 +42,7 @@ $time_color = isset($cdmm_options['countdown_background_color']) ? $cdmm_options
 $countdown_font = isset($cdmm_options['countdown_font']) ? $cdmm_options['countdown_font'] : 'Roberto Mono';
 $template = isset($cdmm_options['template']) ? $cdmm_options['template'] : 'Fixed Center';
 $enable_animation = isset($cdmm_options['enable_active_background']) ? $cdmm_options['enable_active_background'] : null;
+$background_effect = isset($cdmm_options['background_effect']) ? $cdmm_options['background_effect'] : 'None';
 $overlay = isset($cdmm_options['overlay']) ? $cdmm_options['overlay'] : null;
 $enable_social_media = isset($cdmm_options['enable_social_media']) ? $cdmm_options['enable_social_media'] : null;
 if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = $cdmm_options['facebook']; }

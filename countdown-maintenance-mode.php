@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Countdown Maintenance Mode
  * Description: Put your site into maintenance mode with a countdown timer
- * Version: 1.3
+ * Version: 1.4
  * Author: Benjamin Mercer
  *
  **/

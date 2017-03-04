@@ -8,6 +8,7 @@ Functionality:
 	Upload and display custom user logo
 	Set and display countdown to user specified date & time
 	Upload and display custom user background
+	Enable background effect and select between various background effects
 	Enable subscriber form to enable visitors to submit their email address to request updates / news
 	Set custom message
 	Select countdown font

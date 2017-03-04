@@ -62,13 +62,48 @@ function cdmm_options_content() {
 							<div class="row">
 								<div class="col-md-3">
 									<label for="cdmm_settings[enable_active_background]">
-										<?php _e('Enable Interactive Background', 'cdmm_domain'); ?>
+										<?php _e('Enable Background Effect', 'cdmm_domain'); ?>
 									</label>
 								</div>
 								<div class="col-md-9">
 									<input name="cdmm_settings[enable_active_background]" id="cdmm_settings[enable_active_background]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['enable_active_background']) ? $cdmm_options['enable_active_background'] : ''); ?> >
 									<p>
-										<?php _e('Enable background image animation on mouse move, using interactive_bg.js', 'cdmm_domain'); ?>
+										<?php _e('Enable background image effect', 'cdmm_domain'); ?>
+									</p>
+								</div>
+							</div>
+							<div class="row background-effect">
+								<div class="col-md-3">
+									<label for="cdmm_settings[background_effect]">
+										<?php _e('Select Background Effect', 'cdmm_domain'); ?>
+									</label>
+								</div>
+								<div class="col-md-6">
+									<select name="cdmm_settings[background_effect]" id="cdmm_settings[background_effect]" class="form-control">
+										<?php
+										$option_values = array(
+											'None',
+											'Interactive Background Image',
+											'Blur Background Image',
+											'Halftone Background Image'
+										);
+										foreach($option_values as $key => $value) {
+											if($value == $cdmm_options['background_effect']) {
+												?>
+												<option selected><?php echo $value; ?></option>
+												<?php
+											} else {
+												?>
+												<option><?php echo $value; ?></option>
+												<?php
+											}
+										}
+										?>
+									</select>
+								</div>
+								<div class="col-md-3">
+									<p>
+										<?php _e('Select background image effect', 'cdmm_domain'); ?>
 									</p>
 								</div>
 							</div>

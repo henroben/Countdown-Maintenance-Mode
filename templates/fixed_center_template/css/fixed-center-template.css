@@ -12,6 +12,11 @@
 .ibg-bg {
     position: fixed;
     z-index: 0; }
+.halftone {
+    position: fixed;
+    height: 100% !important;
+    width: 100%;
+    z-index: 0; }
 
 /* Generic template styles */
 

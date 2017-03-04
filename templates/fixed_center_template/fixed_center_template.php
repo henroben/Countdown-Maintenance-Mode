@@ -16,7 +16,24 @@ if($preview == true) {
 	<?php endif; ?>
 	<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/templates/fixed_center_template/css/fixed-center-template.css">
 	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.min.js"></script>
-	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.interactive_bg.js"></script>
+	<?php
+		switch($background_effect) {
+			case 'None':
+				break;
+			case 'Interactive Background Image':
+				echo '<script src="' . plugins_url() . '/countdown-maintenance-mode/js/jquery.interactive_bg.js"></script>';
+				break;
+			case 'Blur Background Image':
+				echo '<script src="' . plugins_url() . '/countdown-maintenance-mode/js/vector.js"></script>';
+				echo '<script src="' . plugins_url() . '/countdown-maintenance-mode/js/background-blur.min.js"></script>';
+				break;
+			case 'Halftone Background Image':
+				echo '<script src="' . plugins_url() . '/countdown-maintenance-mode/js/vector.js"></script>';
+				echo '<script src="' . plugins_url() . '/countdown-maintenance-mode/js/particle.js"></script>';
+				echo '<script src="' . plugins_url() . '/countdown-maintenance-mode/js/breathing-halftone.js"></script>';
+				break;
+		}
+	?>
 	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/main.js"></script>
 	<?php
 	if($countdown_font) {
@@ -44,12 +61,29 @@ if($preview == true) {
 			var target_date = "<?php echo $targetDate; ?>";
 		</script>
 		<?php
-		if($enable_animation) {
-			echo '<div class="wrapper bg" data-ibg-bg="' . $background_image . '" >';
-			if($overlay){
-				echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
+		if($enable_animation || $background_effect != 'None') {
+			switch($background_effect) {
+				case 'Interactive Background Image':
+					echo '<div class="wrapper bg" data-ibg-bg="' . $background_image . '" >';
+					if($overlay){
+						echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
+					}
+					echo '</div>';
+					break;
+				case 'Blur Background Image':
+					if($overlay){
+						echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
+					}
+					echo '<div id="blur-background" class="image-background"></div>';
+					break;
+				case 'Halftone Background Image':
+					if($overlay){
+						echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
+					}
+					echo '<img id="breathing-halftone" class="halftone" src="' . $background_image . '" data-src="' . $background_image . '" />';
+					break;
 			}
-			echo '</div>';
+
 		} else {
 			if($overlay){
 				echo '<div class="overlay" style="background-image: url(' . plugins_url() . '/countdown-maintenance-mode/img/overlay/' . $overlay . '.png); opacity: ' . $overlay_opacity . ';"></div>';
@@ -149,22 +183,69 @@ if($preview == true) {
 	echo '</div>
 	</div>';
 	if($enable_animation) {
-	echo '
-	<script>
-		$(document).ready(function(){
-			$(".bg").interactive_bg({
-				contain: true,
-				wrapContent: false
-			});
-		});
-	
-		$(window).resize(function() {
-			$(".wrapper > .ibg-bg").css({
-				width: $(window).outerWidth(),
-				height: $(window).outerHeight()
-			})
-		});
-	</script>';
+		switch($background_effect) {
+			case 'None':
+				break;
+			case 'Interactive Background Image':
+				echo '
+					<script>
+						$(document).ready(function(){
+							$(".bg").interactive_bg({
+								contain: true,
+								wrapContent: false
+							});
+						});
+					
+						$(window).resize(function() {
+							$(".wrapper > .ibg-bg").css({
+								width: $(window).outerWidth(),
+								height: $(window).outerHeight()
+							})
+						});
+					</script>';
+				break;
+			case 'Blur Background Image':
+				echo '
+					<script>
+						$(document).ready(function(){
+							$("#blur-background").backgroundBlur({
+							    imageURL : "' . $background_image . '",
+							    blurAmount : 20,
+							    imageClass : "bg-blur",
+							    duration: 1000, // If the image needs to be faded in, how long that should take
+							    endOpacity : 1 // Specify the final opacity that the image will have
+							});
+						});
+					</script>';
+				break;
+				break;
+			case 'Halftone Background Image':
+				echo '
+					<script>
+				        window.onload = function() {
+				            var img = document.querySelector("#breathing-halftone");
+				            var halftone = window.halftone = new BreathingHalftone( img, {
+				                 dotSize: 1/40,
+				                 dotSizeThreshold: 0.1,
+				                // oscAmplitude: 0.3
+				                // oscPeriod: 2
+				                // initVelocity: 0.01,
+				                isAdditive: true,
+				                // isRadial: true,
+				                // friction: 0.2,
+				                // isChannelLens: false,
+								// channels: [ \'green\', \'blue\' ],
+				                // channels: [ \'lum\' ],
+				                // hoverDiameter: 0.3,
+				                // hoverForce: -0.02,
+				                // activeDiameter: 0.6,
+				                // activeForce: 0.01
+				            })
+				        };
+				</script>';
+				break;
+		}
+
 	}
 	echo '</body>
 </html>';

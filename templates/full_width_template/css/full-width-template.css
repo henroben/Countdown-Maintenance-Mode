@@ -11,6 +11,11 @@
     padding: 0px;
     margin: 0px;
 }
+.halftone {
+    position: fixed;
+    height: 100% !important;
+    width: 100%;
+    z-index: 0; }
 
 .wrapper {
     height: auto !important;

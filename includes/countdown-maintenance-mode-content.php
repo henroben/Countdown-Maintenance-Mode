@@ -27,6 +27,7 @@ function cdmm_set_mode() {
 		$countdown_font = isset($cdmm_options['countdown_font']) ? esc_attr($cdmm_options['countdown_font']) : 'Roberto Mono';
 		$template = isset($cdmm_options['template']) ? esc_attr($cdmm_options['template']) : 'Fixed Center';
 		$enable_animation = isset($cdmm_options['enable_active_background']) ? esc_attr($cdmm_options['enable_active_background']) : null;
+		$background_effect = isset($cdmm_options['background_effect']) ? esc_attr($cdmm_options['background_effect']) : 'None';
 		$overlay = isset($cdmm_options['overlay']) ? esc_attr($cdmm_options['overlay']) : null;
 		$enable_social_media = isset($cdmm_options['enable_social_media']) ? esc_attr($cdmm_options['enable_social_media']) : null;
 		if(!empty($cdmm_options['facebook'])) { $social_media['facebook'] = esc_url($cdmm_options['facebook']); }
