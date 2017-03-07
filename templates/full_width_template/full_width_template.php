@@ -93,7 +93,7 @@ function colourCreator($colour, $per)
 	</head>
 	<body>
 		<?php
-			if($enable_animation || $background_effect != 'None') {
+			if($enable_animation) {
 				switch($background_effect) {
 					case 'Interactive Background Image':
 						echo '<div class="wrapper bg" data-ibg-bg="' . $background_image . '" >';

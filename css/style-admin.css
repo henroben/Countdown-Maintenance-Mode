@@ -49,3 +49,25 @@
 .fira-mono {
     font-family: 'Fira Mono', monospace;
 }
+
+@media (max-width: 480px) {
+    .bootstrap-wrapper .nav-tabs > li {
+        float:none;
+        margin-bottom: 0px;
+        background-color: rgba(255, 255, 255, 0.6);
+    }
+    .bootstrap-wrapper .nav-tabs > li.active > a {
+        border: 1px solid #dddddd;
+    }
+    .bootstrap-wrapper .nav-tabs > li.active > a:hover {
+        border: 1px solid #dddddd;
+    }
+    .bootstrap-wrapper .nav-tabs > li  > a {
+        border-bottom: 1px solid #dddddd;
+        border-left: 1px solid #dddddd;
+        border-right: 1px solid #dddddd;
+    }
+    .bootstrap-wrapper .nav-tabs > li > a:hover {
+        border-color: #dddddd;
+    }
+}
