@@ -267,8 +267,8 @@ and (orientation : portrait) {
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
     /* ipad pro landscape */
     .row {
-        margin-top: 4%;
-        margin-bottom: 4%;
+        margin-top: 2%;
+        margin-bottom: 2%;
     }
 }
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
