@@ -10,6 +10,7 @@ if($preview == true) {
 <head>
 	<meta charset="'. $site_charset . '">
 	<title><?php echo $site_name; ?> is currently undergoing maintenance</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/bootstrap.min.css">
 	<?php if($enable_social_media): ?>
 		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/font-awesome-4.7.0/css/font-awesome.min.css">

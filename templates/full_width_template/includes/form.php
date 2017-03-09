@@ -2,7 +2,7 @@
 echo '
 	<div class="row">
 		<form action="' . plugins_url() . '/countdown-maintenance-mode/includes/countdown-maintenance-mode-mailer.php" id="maintenance-form" method="post">
-			<div class="col-xs-12 col-sm-8 col-md-8 no-padding">
+			<div class="col-xs-8 col-sm-8 col-md-8 no-padding">
 				<div class="form-group">
 					<div class="input-group">
 						<span class="input-group-addon" style="color: ' . $text_color . '; background-color: ' . $time_color . '; border-color: ' . $time_color . ';"><i class="fa fa-envelope-o fa-fw"></i></span>
@@ -12,7 +12,7 @@ echo '
 					<input type="hidden" name="subject" value="' . $subject . '">
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-4 col-md-4 no-padding">
+			<div class="col-xs-4 col-sm-4 col-md-4 no-padding">
 				<div class="form-group">
 					<style>
 						.btn-primary, .btn-primary:focus, .btn-primary:active, .btn-primary:visited {

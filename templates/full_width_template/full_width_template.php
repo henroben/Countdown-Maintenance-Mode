@@ -39,6 +39,7 @@ function colourCreator($colour, $per)
 	<head>
 		<meta charset="'. $site_charset . '">
 		<title><?php echo $site_name; ?> is currently undergoing maintenance</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/bootstrap.min.css">
 		<?php if($enable_social_media): ?>
 			<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/font-awesome-4.7.0/css/font-awesome.min.css">
@@ -146,11 +147,11 @@ function colourCreator($colour, $per)
 			<?php if($targetDate): ?>
 				<div class="row">
 					<div class="col-md-12">
-						<div class="col-md-2"></div>
-						<div class="col-md-8">
+						<div class="hidden-xs col-md-2"></div>
+						<div class="col-xs-12 col-md-8">
 							<div id="DateCountdown" data-date="<?php echo $targetDate; ?>" style="width: <?php if($preview) { echo '600px'; } else { echo "100%"; } ?>; height: auto; padding: 0px; box-sizing: border-box; color: <?php echo $text_color; ?>"></div>
 						</div>
-						<div class="col-md-2"></div>
+						<div class="hidden-xs col-md-2"></div>
 					</div>
 				</div>
 			<?php endif; ?>
