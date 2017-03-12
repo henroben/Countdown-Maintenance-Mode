@@ -42,7 +42,7 @@
 .center-wrapper {
     position: fixed;
     width: 40vw;
-    height: 60vh;
+    height: 65vh;
     top: 0;
     bottom: 0;
     left: 0;
@@ -76,7 +76,7 @@
     padding-top: 1em;
     padding-bottom: 1em;
     opacity: 0.8;
-    font-size: 1.3em; }
+    font-size: 1em; }
 .center-wrapper .time {
     background-color: #444;
     margin-top: .8em;

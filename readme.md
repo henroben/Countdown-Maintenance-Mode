@@ -21,7 +21,5 @@ Features:
 - [x] Preview option
 	
 **TODO**
-- [ ] Validate and sanitise input
-- [ ] Check and fix mobile styles
 - [ ] Enable selectable countdown styles
 - [ ] Add third template
