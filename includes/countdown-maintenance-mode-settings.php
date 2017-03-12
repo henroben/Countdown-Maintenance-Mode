@@ -526,8 +526,18 @@ add_action('admin_init', 'cdmm_register_settings');
 
 // Validate Settings
 function cdmm_settings_validate($input) {
-	$new_input = $input;
-	// add validation here
+	$new_input = array();
 
-	return $new_input;
+	foreach( $input as $key => $value ) {
+
+		// Check to see if the current option has a value. If so, process it.
+		if( isset( $input[$key] ) ) {
+			// Strip all HTML and PHP tags and properly handle quoted strings
+			$new_input[$key] = strip_tags( stripslashes( $input[ $key ] ) );
+		}
+
+	}
+
+	// Return the array processing any additional functions filtered by this action
+	return apply_filters( 'cdmm_settings_validate', $new_input, $input );
 }

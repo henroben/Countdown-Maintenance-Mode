@@ -15,7 +15,7 @@ function cdmm_set_mode() {
 		// Get and escape plugin settings so can be passed straight to template files
 		$cdmm_options = get_option('cdmm_settings');
 		$targetDate = isset($cdmm_options['target_date']) ? esc_attr($cdmm_options['target_date']) : null;
-		$message = isset($cdmm_options['message']) ? esc_html($cdmm_options['message']) : null;
+		$message = isset($cdmm_options['message']) ? sanitize_text_field($cdmm_options['message']) : null;
 		$background_image = isset($cdmm_options['background_image_url']) ? esc_url($cdmm_options['background_image_url']) : null;
 		$logo_image = isset($cdmm_options['logo_image_url']) ? esc_url($cdmm_options['logo_image_url']) : null;
 		$enable_form = isset($cdmm_options['enable_form']) ? esc_attr($cdmm_options['enable_form']) : null;
