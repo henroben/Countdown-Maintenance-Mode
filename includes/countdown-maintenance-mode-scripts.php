@@ -27,6 +27,7 @@ if(is_admin()){
 		// enqueue scripts to enable bootstrap
 		wp_enqueue_script('cdmm-admin-bootstrap-js-hack');
 		wp_enqueue_script('cdmm-admin-bootstrap-js');
+		wp_enqueue_media();
 
 		// enqueue the rest
 

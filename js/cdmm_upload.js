@@ -63,36 +63,69 @@ jQuery(document).ready(function($) {
         }
     });
 
-    // upload script to grab url of image upload from media uploader
-    var imgType = '';
-    $('#upload_logo').click(function() {
-        console.warn('upload logo called');
-        imgType = 'logo';
-        tb_show('Upload a logo image', 'media-upload.php?referer=cdmm_settings&type=image&TB_iframe=true&post_id=0', false);
-        return false;
-    });
-    $('#upload_background').click(function() {
-        imgType = 'background';
-        tb_show('Upload a background image', 'media-upload.php?referer=cdmm_settings&type=image&TB_iframe=true&post_id=0', false);
-        return false;
-    });
-    window.send_to_editor = function(html) {
-        console.warn('src', $(html).attr('src'));
-        console.warn('href', $(html).attr('href'));
-        var image_url = $(html).attr('href');
-        if(!image_url) {
-            image_url = $(html).attr('src');
-        }
-        console.warn('send_to_editor called', image_url);
-        if(imgType == 'logo') {
-            $('.logo_image_url').val(image_url);
-            tb_remove();
-            $('#upload_logo_preview img').attr('src',image_url);
-        } else if(imgType == 'background') {
-            $('.background_image_url').val(image_url);
-            tb_remove();
-            $('#upload_background_preview img').attr('src',image_url);
+    // use new media uploader to upload logo & background image
+    var logo_uploader;
+    $('#upload_logo').click(function(e) {
+
+        e.preventDefault();
+
+        //If the uploader object has already been created, reopen the dialog
+        if (logo_uploader) {
+            logo_uploader.open();
+            return;
         }
 
-    };
+        //Extend the wp.media object
+        logo_uploader = wp.media.frames.file_frame = wp.media({
+            title: 'Choose Logo',
+            button: {
+                text: 'Choose Logo'
+            },
+            multiple: false
+        });
+
+        //When a file is selected, grab the URL and set it as the text field's value
+        logo_uploader.on('select', function() {
+            attachment = logo_uploader.state().get('selection').first().toJSON();
+            $('.logo_image_url').val(attachment.url);
+            $('#upload_logo_preview img').attr('src',attachment.url);
+        });
+
+        //Open the uploader dialog
+        logo_uploader.open();
+
+    });
+    // load background image
+    var background_uploader;
+    $('#upload_background').click(function(e) {
+
+        e.preventDefault();
+
+        //If the uploader object has already been created, reopen the dialog
+        if (background_uploader) {
+            background_uploader.open();
+            return;
+        }
+
+        //Extend the wp.media object
+        background_uploader = wp.media.frames.file_frame = wp.media({
+            title: 'Choose Background Image',
+            button: {
+                text: 'Set Background Image'
+            },
+            multiple: false
+        });
+
+        //When a file is selected, grab the URL and set it as the text field's value
+        background_uploader.on('select', function() {
+            attachment = background_uploader.state().get('selection').first().toJSON();
+            $('.background_image_url').val(attachment.url);
+            $('#upload_background_preview img').attr('src',attachment.url);
+        });
+
+        //Open the uploader dialog
+        background_uploader.open();
+
+    });
+
 });

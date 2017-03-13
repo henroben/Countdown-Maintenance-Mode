@@ -2,7 +2,7 @@
 Contributors: henroben
 Donate link: http://example.com/
 Tags: maintenance mode, countdown, admin
-Requires at least: 4.6
+Requires at least: 3.8.1
 Tested up to: 4.7
 Stable tag: 4.3
 License: GPLv3 or later

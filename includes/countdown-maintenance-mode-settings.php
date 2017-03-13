@@ -53,7 +53,7 @@ function cdmm_options_content() {
 									</label>
 								</div>
 								<div class="col-md-9">
-									<input name="cdmm_settings[enable]" id="cdmm_settings[enable]" type="checkbox" value="1" <?php checked('1', $cdmm_options['enable']); ?>  >
+									<input name="cdmm_settings[enable]" id="cdmm_settings[enable]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['enable']) ? $cdmm_options['enable'] : ''); ?>  >
 									<p>
 										<?php _e('Put site into maintenance mode, only logged in Administrators will be able to view the site.', 'cdmm_domain'); ?>
 									</p>

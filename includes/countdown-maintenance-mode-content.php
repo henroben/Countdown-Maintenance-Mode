@@ -4,6 +4,7 @@
  * Get and escape all settings for plugin, then pass through to relevant template file
  */
 
+
 function cdmm_set_mode() {
 	if(!current_user_can('edit_theme_options') || !is_user_logged_in()){
 
@@ -37,6 +38,7 @@ function cdmm_set_mode() {
 		if(!empty($cdmm_options['linkedin'])) { $social_media['linkedin'] = esc_url($cdmm_options['linkedin']); }
 		if(!empty($cdmm_options['instagram'])) { $social_media['instagram'] = esc_url($cdmm_options['instagram']); }
 		if(!empty($cdmm_options['youtube'])) { $social_media['youtube'] = esc_url($cdmm_options['youtube']); }
+		$preview = false;
 
 		// check if overlay set
 		if($overlay == 'None') {
@@ -73,6 +75,6 @@ function cdmm_set_mode() {
 	}
 }
 
-if($cdmm_options['enable']) {
+if(isset($cdmm_options['enable'])) {
 	add_action( 'send_headers', 'cdmm_set_mode' );
 }
