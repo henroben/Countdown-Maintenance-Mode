@@ -12,6 +12,7 @@ function cdmm_set_mode() {
 		$site_language = get_bloginfo('language');
 		$site_charset = get_bloginfo('charset');
 		$site_name = get_bloginfo('name');
+		$site_description = get_bloginfo('description');
 
 		// Get and escape plugin settings so can be passed straight to template files
 		$cdmm_options = get_option('cdmm_settings');
@@ -55,7 +56,7 @@ function cdmm_set_mode() {
 			$background_image = plugins_url() . '/countdown-maintenance-mode/img/wall.jpg';
 		}
 
-		header("Content-Type: text/html");
+//		header("Content-Type: text/html");
 
 		// Check which template has been selected, if none selected then use default
 		if($template) {
@@ -71,10 +72,30 @@ function cdmm_set_mode() {
 			// load in default template
 			include_once(dirname( __FILE__ ) . '../../countdown-maintenance-mode/templates/fixed_center_template/fixed_center_template.php');
 		}
+
+
 		exit();
 	}
 }
 
 if(isset($cdmm_options['enable'])) {
-	add_action( 'send_headers', 'cdmm_set_mode' );
+	function remove_all_theme_styles() {
+		// Site theme unknown, so remove all css to prevent conflicts
+		global $wp_styles;
+		$wp_styles->queue = array();
+	}
+	function check_page() {
+		if(!current_user_can('edit_theme_options') || !is_user_logged_in()) {
+			if ( is_page( 25 ) ) {
+				add_action( 'wp_print_styles', 'remove_all_theme_styles', 100 );
+
+				add_action( 'wp_head', 'cdmm_set_mode' );
+			}
+		}
+	}
+
+	add_action('wp', 'check_page');
+
+
+
 }

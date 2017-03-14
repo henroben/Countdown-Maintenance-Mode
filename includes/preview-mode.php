@@ -70,6 +70,10 @@ $preview = true;
 	}
 
 	header("Content-Type: text/html");
+	echo '<!DOCTYPE html>';
+	echo '<html>';
+	echo '<head>';
+	echo '<script src="' . $base . '/countdown-maintenance-mode/js/jquery.min.js"></script>';
 
 	// Check which template has been selected, if none selected then use default
 	if($template) {

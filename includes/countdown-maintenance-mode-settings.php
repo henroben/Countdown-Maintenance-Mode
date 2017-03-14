@@ -190,7 +190,6 @@ function cdmm_options_content() {
 									<input name="cdmm_settings[logo_image_url]" id="cdmm_settings[logo_image_url]" type="hidden" class="widefat logo_image_url" value="<?php echo $cdmm_options['logo_image_url']; ?>">
 									<input id="upload_logo" type="button" class="btn btn-primary" value="<?php _e( 'Upload', 'cdmm_domain' ); ?>" />
 									<?php if ( 'Delete' != $cdmm_options['logo_image_url'] ): ?>
-<!--										<input id="delete_logo_button" name="cdmm_settings[logo_image_url]" type="submit" class="button" value="--><?php //_e( '', 'cdmm_domain' ); ?><!--" />-->
 										<input id="cdmm_settings[logo_image_url]" name="cdmm_settings[logo_image_url]" type="submit" class="btn btn-danger" value="<?php _e( 'Delete', 'cdmm_domain' ); ?>" />
 									<?php endif; ?>
 								</div>
@@ -367,27 +366,27 @@ function cdmm_options_content() {
 							<div class="row">
 								<div class="col-md-3">
 									<label for="cdmm_settings[info_background_color]">
-										<?php _e('Wrapper Background', 'cdmm_domain'); ?>
+										<?php _e('Background Colour', 'cdmm_domain'); ?>
 									</label>
 								</div>
 								<div class="col-md-9">
 									<input name="cdmm_settings[info_background_color]" id="cdmm_settings[info_background_color]"
 									       type="text" class="info-background-color" value="<?php echo (isset($cdmm_options['info_background_color']) && $cdmm_options['info_background_color'] != '' ) ? $cdmm_options['info_background_color'] : '#333333'; ?>">
 									<p class="description">
-										<?php _e('Enter a background colour for the Countdown Wrapper Panel', 'cdmm_domain'); ?>
+										<?php _e('Enter a background colour, usage will vary depending on selected template', 'cdmm_domain'); ?>
 									</p>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-3">
 									<label for="cdmm_settings[countdown_background_color]">
-										<?php _e('Countdown Background', 'cdmm_domain'); ?>
+										<?php _e('Countdown Colour', 'cdmm_domain'); ?>
 									</label>
 								</div>
 								<div class="col-md-9">
 									<input name="cdmm_settings[countdown_background_color]" id="cdmm_settings[countdown_background_color]" type="text" class="countdown-background-color" value="<?php echo (isset($cdmm_options['countdown_background_color']) && $cdmm_options['countdown_background_color'] != '' ) ? $cdmm_options['countdown_background_color'] : '#444444'; ?>" >
 									<p class="description">
-										<?php _e('Enter a background colour for the Countdown Number Panels', 'cdmm_domain'); ?>
+										<?php _e('Enter a colour for the Countdown Timer, usage will vary depending on template selected.', 'cdmm_domain'); ?>
 									</p>
 								</div>
 							</div>
@@ -401,7 +400,7 @@ function cdmm_options_content() {
 									<input name="cdmm_settings[text_color]" id="cdmm_settings[text_color]"
 									       type="text" class="text-color" value="<?php echo (isset($cdmm_options['text_color']) && $cdmm_options['text_color'] != '' ) ? $cdmm_options['text_color'] : '#ffffff'; ?>">
 									<p class="description">
-										<?php _e('Enter a text colour for the Countdown Wrapper Panel', 'cdmm_domain'); ?>
+										<?php _e('Enter a text colour.', 'cdmm_domain'); ?>
 									</p>
 								</div>
 							</div>

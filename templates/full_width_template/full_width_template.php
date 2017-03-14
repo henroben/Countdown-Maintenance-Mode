@@ -35,10 +35,11 @@ function colourCreator($colour, $per)
 }
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $site_language; ?>">
-	<head>
-		<meta charset="'. $site_charset . '">
-		<title><?php echo $site_name; ?> is currently undergoing maintenance</title>
+<!--<html lang="--><?php //echo $site_language; ?><!--">-->
+<!--	<head>-->
+<!--		<meta charset="'. $site_charset . '">-->
+<!--		<title>--><?php //echo $site_name; ?><!-- is currently undergoing maintenance</title>-->
+<!--		<meta name="description" content="--><?php //echo $site_description; ?><!--">-->
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/bootstrap.min.css">
 		<?php if($enable_social_media): ?>
@@ -48,7 +49,7 @@ function colourCreator($colour, $per)
 		<?php if($targetDate): ?>
 			<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/TimeCircles.css">
 		<?php endif; ?>
-		<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.min.js"></script>
+<!--		<script src="--><?php //echo plugins_url() ?><!--/countdown-maintenance-mode/js/jquery.min.js"></script>-->
 		<?php
 			switch($background_effect) {
 				case 'None':
@@ -194,25 +195,25 @@ function colourCreator($colour, $per)
 					case 'Interactive Background Image':
 						echo '
 						<script>
-							$(document).ready(function(){
+							jQuery(document).ready(function($){
 								$(".bg").interactive_bg({
 									contain: true,
 									wrapContent: false
 								});
-							});
-						
-							$(window).resize(function() {
-								$(".wrapper > .ibg-bg").css({
-									width: $(window).outerWidth(),
-									height: $(window).outerHeight()
-								})
+								
+								$(window).resize(function() {
+									$(".wrapper > .ibg-bg").css({
+										width: $(window).outerWidth(),
+										height: $(window).outerHeight()
+									})
+								});
 							});
 						</script>';
 						break;
 					case 'Blur Background Image':
 						echo '
 						<script>
-							$(document).ready(function(){
+							jQuery(document).ready(function($){
 								$("#blur-background").backgroundBlur({
 								    imageURL : "' . $background_image . '",
 								    blurAmount : ' . $blur_amount . ',
@@ -259,16 +260,18 @@ function colourCreator($colour, $per)
 			}
 		?>
 		<script>
-			$("#DateCountdown").TimeCircles({
-				animation: "ticks",
-				circle_bg_color: "rgba(255,255,255,0.3)",
-				direction: "Counter-clockwise",
-				time: {
-					Days: { color: "<?php echo $time_color; ?>" },
-					Hours: { color: "<?php echo $time_color; ?>" },
-					Minutes: { color: "<?php echo $time_color; ?>" },
-					Seconds: { color: "<?php echo $time_color; ?>" }
-				}
+			jQuery(document).ready(function($) {
+				$("#DateCountdown").TimeCircles({
+					animation: "ticks",
+					circle_bg_color: "rgba(255,255,255,0.3)",
+					direction: "Counter-clockwise",
+					time: {
+						Days: {color: "<?php echo $time_color; ?>"},
+						Hours: {color: "<?php echo $time_color; ?>"},
+						Minutes: {color: "<?php echo $time_color; ?>"},
+						Seconds: {color: "<?php echo $time_color; ?>"}
+					}
+				});
 			});
 		</script>
 	</body>

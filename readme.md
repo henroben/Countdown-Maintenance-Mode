@@ -23,3 +23,4 @@ Features:
 **TODO**
 - [ ] Enable selectable countdown styles
 - [ ] Add third template
+- [ ] Apply maintenance mode to a specific page

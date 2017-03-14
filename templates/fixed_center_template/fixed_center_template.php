@@ -5,18 +5,13 @@ if($preview == true) {
 	}
 }
 ?>
-<!DOCTYPE html>
-<html lang="<?php echo $site_language; ?>">
-<head>
-	<meta charset="'. $site_charset . '">
-	<title><?php echo $site_name; ?> is currently undergoing maintenance</title>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/bootstrap.min.css">
 	<?php if($enable_social_media): ?>
 		<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/css/font-awesome-4.7.0/css/font-awesome.min.css">
 	<?php endif; ?>
 	<link rel="stylesheet" href="<?php echo plugins_url() ?>/countdown-maintenance-mode/templates/fixed_center_template/css/fixed-center-template.css">
-	<script src="<?php echo plugins_url() ?>/countdown-maintenance-mode/js/jquery.min.js"></script>
 	<?php
 		switch($background_effect) {
 			case 'None':
@@ -196,7 +191,7 @@ if($preview == true) {
 			case 'Interactive Background Image':
 				echo '
 					<script>
-						$(document).ready(function(){
+						jQuery(document).ready(function($){
 							$(".bg").interactive_bg({
 								contain: true,
 								wrapContent: false
@@ -214,7 +209,7 @@ if($preview == true) {
 			case 'Blur Background Image':
 				echo '
 					<script>
-						$(document).ready(function(){
+						jQuery(document).ready(function($){
 							$("#blur-background").backgroundBlur({
 							    imageURL : "' . $background_image . '",
 							    blurAmount : ' . $blur_amount . ',

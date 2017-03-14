@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
         logo_uploader = wp.media.frames.file_frame = wp.media({
             title: 'Choose Logo',
             button: {
-                text: 'Choose Logo'
+                text: 'Set Logo Image'
             },
             multiple: false
         });
