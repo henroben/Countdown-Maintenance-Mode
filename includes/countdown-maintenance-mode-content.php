@@ -3,7 +3,7 @@
 /*
  * Get and escape all settings for plugin, then pass through to relevant template file
  */
-
+$cdmm_options = get_option('cdmm_settings');
 
 function cdmm_set_mode() {
 	if(!current_user_can('edit_theme_options') || !is_user_logged_in()){
@@ -16,6 +16,7 @@ function cdmm_set_mode() {
 
 		// Get and escape plugin settings so can be passed straight to template files
 		$cdmm_options = get_option('cdmm_settings');
+
 		$targetDate = isset($cdmm_options['target_date']) ? esc_attr($cdmm_options['target_date']) : null;
 		$message = isset($cdmm_options['message']) ? sanitize_text_field($cdmm_options['message']) : null;
 		$background_image = isset($cdmm_options['background_image_url']) ? esc_url($cdmm_options['background_image_url']) : null;
@@ -84,18 +85,26 @@ if(isset($cdmm_options['enable'])) {
 		global $wp_styles;
 		$wp_styles->queue = array();
 	}
-	function check_page() {
-		if(!current_user_can('edit_theme_options') || !is_user_logged_in()) {
-			if ( is_page( 25 ) ) {
+	function check_page($page) {
+        if(!current_user_can('edit_theme_options') || !is_user_logged_in()) {
+			if ( is_page( $page ) ) {
 				add_action( 'wp_print_styles', 'remove_all_theme_styles', 100 );
 
 				add_action( 'wp_head', 'cdmm_set_mode' );
+
 			}
 		}
 	}
-
-	add_action('wp', 'check_page');
-
-
+    // check if maintenance mode set for single page
+    if(isset($cdmm_options['enable_scope'])) {
+        $page = $cdmm_options['maintenance_scope'];
+        add_action('wp', function() use ($page) {
+            check_page($page);
+        }, 10, 1);
+    } else {
+        // set for entire site
+        add_action( 'wp_print_styles', 'remove_all_theme_styles', 100 );
+        add_action( 'wp_head', 'cdmm_set_mode' );
+    }
 
 }

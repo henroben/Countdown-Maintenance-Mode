@@ -7,6 +7,7 @@ specified date.
 Features:
 ---------
 - [x] Enable maintenance mode, with maintenance/countdown page shown to non admin users and visitors
+- [x] Apply maintenance mode to a specific page or site wide
 - [x] Upload and display custom user logo
 - [x] Set and display countdown to user specified date & time
 - [x] Upload and display custom user background
@@ -23,4 +24,3 @@ Features:
 **TODO**
 - [ ] Enable selectable countdown styles
 - [ ] Add third template
-- [ ] Apply maintenance mode to a specific page

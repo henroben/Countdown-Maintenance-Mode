@@ -4,7 +4,7 @@ Donate link: http://example.com/
 Tags: maintenance mode, countdown, admin
 Requires at least: 3.8.1
 Tested up to: 4.7
-Stable tag: 4.3
+Stable tag: 4.7
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 

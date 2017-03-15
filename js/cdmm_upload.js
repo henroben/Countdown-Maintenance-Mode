@@ -1,5 +1,11 @@
 jQuery(document).ready(function($) {
 
+    // Hide page select on load
+    if($('.page-select').attr("checked")) {
+        $('.page-select').show();
+    } else {
+        $('.page-select').hide();
+    }
     // check which background effect is selected and show relevant options
     switch($('.background-effect-select').val()) {
         case 'None':
@@ -33,6 +39,15 @@ jQuery(document).ready(function($) {
     $( ".date-picker" ).datetimepicker({
         dateFormat: "yy-mm-dd",
         separator: "T"
+    });
+
+    // show page list on selection
+    $('.page-select-checkbox').change(function() {
+        if($(this).attr("checked")) {
+            $('.page-select').slideDown();
+        } else {
+            $('.page-select').slideUp();
+        }
     });
 
     // change background effect description on selection

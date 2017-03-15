@@ -59,6 +59,56 @@ function cdmm_options_content() {
 									</p>
 								</div>
 							</div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="cdmm_settings[enable_scope]">
+                                        <?php _e('Enable for specific page', 'cdmm_domain'); ?>
+                                    </label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input name="cdmm_settings[enable_scope]" id="cdmm_settings[enable_scope]" type="checkbox" value="1" <?php checked('1', isset($cdmm_options['enable_scope']) ? $cdmm_options['enable_scope'] : ''); ?> class="page-select-checkbox" >
+                                    <p>
+                                        <?php _e('Select to apply maintenance mode to a specific page, the default unselected is entire site.', 'cdmm_domain'); ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row page-select">
+                                <div class="col-md-3">
+                                    <label for="cdmm_settings[maintenance_scope]">
+                                        <?php _e('Select pages', 'cdmm_domain'); ?>
+                                    </label>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="cdmm_settings[maintenance_scope]" id="cdmm_settings[maintenance_scope]" class="form-control">
+                                        <?php
+                                        $pages = get_pages();
+                                        $option_values = array(
+                                            'Entire Site',
+                                            'Interactive Background Image',
+                                            'Blur Background Image',
+                                            'Halftone Background Image'
+                                        );
+                                        foreach($pages as $page) {
+                                            if($page->ID == $cdmm_options['maintenance_scope']) {
+                                                ?>
+                                                <option value="<?php echo $page->ID ?>" selected><?php echo $page->post_title; ?></option>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <option value="<?php echo $page->ID ?>"><?php echo $page->post_title; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <p id="scope-description">
+                                        <?php _e('Select maintentence mode scope: entire site, individual or multiple pages.', 'cdmm_domain'); ?>
+                                    </p>
+                                </div>
+                            </div>
+
 							<div class="row">
 								<div class="col-md-3">
 									<label for="cdmm_settings[enable_active_background]">
@@ -506,9 +556,9 @@ function cdmm_options_content() {
 						</div>
 					</div>
 				</div>
-
+            </form>
 		</div>
-		</form>
+
 	</div>
 	<?php
 	echo ob_get_clean();
