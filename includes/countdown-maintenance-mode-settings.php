@@ -79,15 +79,10 @@ function cdmm_options_content() {
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <select name="cdmm_settings[maintenance_scope]" id="cdmm_settings[maintenance_scope]" class="form-control">
+                                    <select name="cdmm_settings[maintenance_scope][]" id="cdmm_settings[maintenance_scope][]" class="form-control" multiple>
                                         <?php
                                         $pages = get_pages();
-                                        $option_values = array(
-                                            'Entire Site',
-                                            'Interactive Background Image',
-                                            'Blur Background Image',
-                                            'Halftone Background Image'
-                                        );
+
                                         foreach($pages as $page) {
                                             if($page->ID == $cdmm_options['maintenance_scope']) {
                                                 ?>

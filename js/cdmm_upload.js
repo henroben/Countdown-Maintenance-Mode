@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 
     // Hide page select on load
-    if($('.page-select').attr("checked")) {
+    if($('.page-select-checkbox').attr("checked")) {
         $('.page-select').show();
     } else {
         $('.page-select').hide();
