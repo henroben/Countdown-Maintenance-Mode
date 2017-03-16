@@ -74,7 +74,6 @@ function cdmm_set_mode() {
 			include_once(dirname( __FILE__ ) . '../../countdown-maintenance-mode/templates/fixed_center_template/fixed_center_template.php');
 		}
 
-
 		exit();
 	}
 }
@@ -98,6 +97,7 @@ if(isset($cdmm_options['enable'])) {
     // check if maintenance mode set for single page
     if(isset($cdmm_options['enable_scope'])) {
         $page = $cdmm_options['maintenance_scope'];
+
         add_action('wp', function() use ($page) {
             check_page($page);
         }, 10, 1);

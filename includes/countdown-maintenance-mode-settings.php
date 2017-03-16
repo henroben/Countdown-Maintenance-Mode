@@ -79,20 +79,16 @@ function cdmm_options_content() {
                                     </label>
                                 </div>
                                 <div class="col-md-6">
-                                    <select name="cdmm_settings[maintenance_scope][]" id="cdmm_settings[maintenance_scope][]" class="form-control" multiple>
+                                    <select name="cdmm_settings[maintenance_scope][]" id="cdmm_settings[maintenance_scope]" class="form-control" multiple>
                                         <?php
                                         $pages = get_pages();
 
                                         foreach($pages as $page) {
-                                            if($page->ID == $cdmm_options['maintenance_scope']) {
+
                                                 ?>
-                                                <option value="<?php echo $page->ID ?>" selected><?php echo $page->post_title; ?></option>
+                                                <option value="<?php echo $page->ID ?>" <?php echo in_array($page->ID, $cdmm_options['maintenance_scope']) ? 'selected="selected"' : ''; ?>><?php echo $page->post_title; ?></option>
                                                 <?php
-                                            } else {
-                                                ?>
-                                                <option value="<?php echo $page->ID ?>"><?php echo $page->post_title; ?></option>
-                                                <?php
-                                            }
+
                                         }
                                         ?>
                                     </select>
@@ -575,7 +571,9 @@ function cdmm_settings_validate($input) {
 	foreach( $input as $key => $value ) {
 
 		// Check to see if the current option has a value. If so, process it.
-		if( isset( $input[$key] ) ) {
+        if($key == 'maintenance_scope') {
+            $new_input[$key] = esc_sql($input[ $key ]);
+        } else if( isset( $input[$key] ) ) {
 			// Strip all HTML and PHP tags and properly handle quoted strings
 			$new_input[$key] = strip_tags( stripslashes( $input[ $key ] ) );
 		}
